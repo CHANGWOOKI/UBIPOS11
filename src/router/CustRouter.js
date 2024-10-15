@@ -1,7 +1,7 @@
 const CustRouter = () => {
-    return [
+  return [
 
-    ];
-  }
-  
-  export default CustRouter;
+  ];
+}
+
+export default CustRouter;

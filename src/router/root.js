@@ -29,23 +29,23 @@ const Root = createBrowserRouter([
             },
             {
                 path: 'sale',
-                element: <SaleRouter />
+                children: SaleRouter(),
             },
             {
                 path: 'order',
-                element: <OrderRouter />
+                children: OrderRouter(),
             },
             {
                 path: 'move',
-                element: <MoveRouter />
+                children: MoveRouter(),
             },
             {
                 path: 'stock',
-                element: <StockRouter />
+                children: StockRouter(),
             },
             {
                 path: 'cust',
-                element: <CustRouter />
+                children: CustRouter(),
             },
         ],
     },

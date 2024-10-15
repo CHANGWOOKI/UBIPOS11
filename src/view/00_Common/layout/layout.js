@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import LeftNav from "./leftNav";
 
 const Layout = () => {
     return (
         <>
-            헤더,레프트베너
+            <LeftNav /> 
             <main>
                 <Outlet />
             </main>

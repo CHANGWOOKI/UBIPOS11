@@ -1,18 +1,21 @@
-// import { lazy } from "react";
+ import { lazy } from "react";
 
-// const OrderList = lazy(() => import("../pages/order/orderList.js"));
-// const OrderRegiste = lazy(() => import("../pages/order/OrderRegiste.js"));
+ const Order_Registe = lazy(() => import ("../view/02_Order/01_Order_Regist/main.js"));
+ const Order_List = lazy(() => import ("../view/02_Order/02_Order_List/main.js"));
+
+ 
+
 
 const OrderRouter = () => {
   return [
-    // {
-    //   path: 'registe',
-    //   element: <OrderRegiste />,
-    // },
-    // {
-    //   path: 'list',
-    //   element: <OrderList />,
-    // },
+    {
+      path: 'registe',
+      element: <Order_Registe />,
+    },
+    {
+      path: 'list',
+      element: <Order_List />,
+    },
   ];
 }
 

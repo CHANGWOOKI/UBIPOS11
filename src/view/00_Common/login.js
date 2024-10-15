@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
 
     if (!storeCode || !companyCode || !password) {
       alert("모든 필드를 입력해 주세요.");
@@ -21,8 +21,10 @@ const Login = () => {
 
   return (
     <>
-      <div className="wrapper">
+      <div class="header">
         <h1>Sewon POS</h1>
+      </div>
+      <div className="wrapper">
         <div className="container">
           <div className="content">
             <div className="announcements">
@@ -132,10 +134,9 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <footer>
-          <p>WWW.SEWONATOS.CO.KR</p>
-        </footer>
+        <div class="footer"><p>SEWONATOS.CO.KR</p></div>
       </div>
+
     </>
   );
 };

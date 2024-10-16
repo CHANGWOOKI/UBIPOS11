@@ -4,7 +4,6 @@ import SaleRouter from "./saleRouter";
 import OrderRouter from "./orderRouter";
 import MoveRouter from "./moveRouter";
 import StockRouter from "./stockRouter";
-import CustRouter from "./custRouter";
 import Login from "../login/login";
 import Layout from "../view/00_Common/layout/layout"
 import Main from "../view/00_Common/main"
@@ -41,10 +40,6 @@ const Root = createBrowserRouter([
             {
                 path: 'stock',
                 children: StockRouter(),
-            },
-            {
-                path: 'cust',
-                children: CustRouter(),
             },
         ],
     },

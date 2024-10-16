@@ -1,0 +1,166 @@
+$primary-color: #3498db;
+$secondary-color: #2c3e50;
+$background-color: #ecf0f1;
+$border-color: #bdc3c7;
+$hover-color: #2980b9;
+
+// body {
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//     margin: 0;
+//     padding: 10px;
+//     background-color: $background-color;
+//     color: $secondary-color;
+// }
+
+.order-management {
+    .main-title {
+        font-size: 25px;
+        font-weight: 600;
+        color: $secondary-color;
+        margin: 10px 0 10px 20px;
+        display: flex;
+        align-items: center;
+
+        .red-dot {
+            width: 12px;
+            height: 12px;
+            background-color: $primary-color;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 12px;
+        }
+    }
+
+    .content-box {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 4px 6px 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 70px); 
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+
+            .header-buttons {
+                display: flex;
+                gap: 12px;
+
+                button {
+                    color: white;
+                    border: none;
+                    padding: 15px 25px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    font-weight: 500;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+
+                    &:hover {
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                    }
+                }
+
+                .query-button {
+                    background-color: $primary-color;
+                    &:hover { background-color: $hover-color; }
+                }
+
+                .new-button {
+                    background-color: $primary-color;
+                    &:hover { background-color: $hover-color; }
+                }
+
+                .delete-button {
+                    background-color: $primary-color;
+                    &:hover { background-color: $hover-color; }
+                }
+            }
+        }
+
+        main {
+            .search-bar {
+                display: flex;
+                align-items: center;
+                border: 1px solid $border-color;
+                border-radius: 8px;
+                padding: 16px;
+                margin-bottom: 20px;
+
+                .date-range, .radio-group {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 24px;
+
+                    label {
+                        font-weight: 600;
+                        margin-right: 12px;
+                        color: $secondary-color;
+                    }
+
+                    .date-inputs, .radio-inputs {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    input[type="date"] {
+                        padding: 8px 12px;
+                        border: 1px solid $border-color;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        color: $secondary-color;
+                    }
+
+                    span {
+                        margin: 0 8px;
+                        color: $secondary-color;
+                    }
+                }
+
+                .radio-group {
+                    .radio-inputs {
+                        display: flex;
+                        align-items: center;
+                        background-color: white;
+                        border-radius: 6px;
+                        overflow: hidden;
+                        border: 1px solid $border-color;
+
+                        input[type="radio"] {
+                            display: none;
+                        }
+
+                        label {
+                            padding: 8px 16px;
+                            margin: 0;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease;
+                            font-weight: normal;
+
+                            &:hover {
+                                background-color: #e8e8e8;
+                            }
+                        }
+
+                        input[type="radio"]:checked + label {
+                            background-color: $primary-color;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+
+        .grid {
+            flex-grow: 1;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    }
+}

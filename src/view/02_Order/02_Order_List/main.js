@@ -1,6 +1,6 @@
 import "./style.scss";
 
-const Order_List = () => {
+const OrderList = () => {
     return (
         <>
             <div class="order-management">
@@ -49,4 +49,4 @@ const Order_List = () => {
     )
 }
 
-export default Order_List;
+export default OrderList;

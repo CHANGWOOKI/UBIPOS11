@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 
+import Login from "../login/login";
+import Main from "../view/00_Common/main/main";
+import Layout from "../view/00_Common/layout/layout"
+
 import SaleRouter from "./saleRouter";
 import OrderRouter from "./orderRouter";
 import MoveRouter from "./moveRouter";
 import StockRouter from "./stockRouter";
-import Login from "../login/login";
-import Layout from "../view/00_Common/layout/layout"
-import Main from "../view/00_Common/main"
-
+import CustRouter from "./custRouter";
 
 
 
@@ -40,6 +41,10 @@ const Root = createBrowserRouter([
             {
                 path: 'stock',
                 children: StockRouter(),
+            },
+            {
+                path: 'cust',
+                children: CustRouter(),
             },
         ],
     },

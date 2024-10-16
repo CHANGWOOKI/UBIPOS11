@@ -1,4 +1,4 @@
-const Sale_Magam_List = () => {
+const SaleMagamList = () => {
     return(
         <>
 
@@ -6,4 +6,4 @@ const Sale_Magam_List = () => {
     )
 }
 
-export default Sale_Magam_List
+export default SaleMagamList;

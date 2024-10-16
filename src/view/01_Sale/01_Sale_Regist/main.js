@@ -1,4 +1,4 @@
-const Sale_Registe = () => {
+const SaleRegiste = () => {
     return(
         <>
         
@@ -6,4 +6,4 @@ const Sale_Registe = () => {
     )
 }
 
-export default Sale_Registe;
+export default SaleRegiste;

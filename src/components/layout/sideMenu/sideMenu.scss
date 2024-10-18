@@ -1,85 +1,173 @@
-.side-menu-container {
-  display: inline-flex; /* 사이드 메뉴와 메인 콘텐츠를 나란히 배치 */
-  height: 100vh; /* 높이를 화면 전체에 맞춤 */
-  background-color: white; /* 사이드 메뉴 배경색을 흰색으로 설정 */
-  
-  
+$primary-color: #4e69bd;
+$secondary-color: #eee;
+$text-color: #333;
 
-  .main-menu {
-    width: 100px; /* 메인 메뉴 너비를 100px로 설정 */
-    background-color: skyblue; /* 메인 메뉴 배경색을 하늘색으로 설정 */
-    padding: 8px; /* 메뉴 패딩을 8px로 설정 */
-    color: white; /* 메뉴 글자색을 흰색으로 설정 */
-  }
+.container {
+  display: flex;
+  height: 100vh;
 
-  .menu-item {
-    margin-bottom: 30px; /* 각 메뉴 항목의 하단 여백을 16px로 설정 */
+  .sidebar {
+    width: 80px;
+    background-color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
 
-    button {
-      display: flex; /* 버튼 내부 요소들을 수평으로 나열 */
-      align-items: center; /* 버튼 내부 요소들을 세로 가운데 정렬 */
-      justify-content: space-between; /* 버튼 내부 요소들을 좌우로 정렬 */
-      width: 100%; /* 버튼 너비를 부모 요소 너비에 맞춤 */
-      padding: 8px; /* 버튼 패딩을 8px로 설정 */
-      background-color: transparent; /* 버튼 배경색을 투명하게 설정 */
-      border: none; /* 버튼 테두리를 없앰 */
-      color: white; /* 버튼 텍스트 색상을 흰색으로 설정 */
-      font-size: 12px; /* 버튼 글자 크기를 12px로 설정 */
-      cursor: pointer; /* 버튼에 마우스를 올렸을 때 포인터 커서 표시 */
+    .logo {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .tab {
+      width: 80px;
+      height: 80px;
+      border-radius: 7px 0 0 7px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+
+      svg {
+        margin-bottom: 5px;
+      }
+
+      p {
+        margin: 0;
+        font-size: 11px;
+      }
+
+      &:hover, &.active {
+        background-color: #fff;
+        color: $primary-color;
+      }
+    }
+
+    .bottom-icons {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .icon-button {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: #fff;
+      transition: background-color 0.3s ease;
+      margin: 5px 0;
 
       &:hover {
-        background-color: rgb(
-          109,
-          191,
-          224
-        ); /* 버튼에 마우스를 올리면 배경색을 파란색으로 설정 */
-      }
-
-      span {
-        white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
-        overflow: hidden; /* 텍스트가 길 경우 넘치는 부분을 숨김 */
-        text-overflow: ellipsis; /* 넘치는 텍스트 부분을 말줄임표(...)로 표시 */
+        background-color: rgba(255, 255, 255, 0.1);
       }
     }
   }
-}
 
-.sub-menu {
-  width: 0; /* 기본적으로 서브 메뉴의 너비를 0으로 설정 */
-  background-color: white; /* 서브 메뉴 배경색을 흰색으로 설정 */
-  overflow: hidden; /* 서브 메뉴에서 넘치는 부분을 숨김 */
-  transition: cubic-bezier(0.165, 0.84, 0.44, 1); /* 너비가 변경될 때 0.3초 동안 애니메이션 효과 적용 */
-  color: #333; /* 서브 메뉴 글자색을 어두운 회색으로 설정 */
+  .main-content {
+    flex-grow: 1;
+    background-color: #fff;
+    transition: width 0.3s ease;
+    width: 0;
+    overflow: hidden;
 
-  &.active {
-    width: 150px; /* 서브 메뉴가 활성화되었을 때 너비를 150px로 설정 */
-  }
-
-  .sub-menu-content {
-    padding: 8px; /* 서브 메뉴 콘텐츠 패딩을 8px로 설정 */
-
-    h2 {
-      font-size: 16px; /* 서브 메뉴 제목의 글자 크기를 16px로 설정 */
-      font-weight: bold; /* 서브 메뉴 제목을 굵게 표시 */
-      margin-bottom: 8px; /* 서브 메뉴 제목 하단 여백을 8px로 설정 */
-      color: #333; /* 서브 메뉴 제목 글자색을 어두운 회색으로 설정 */
+    &.open {
+      width: 240px;
     }
 
-    ul {
-      font-size: 14px; /* 서브 메뉴 항목의 글자 크기를 14px로 설정 */
-      list-style: none; /* 서브 메뉴 항목 리스트 스타일을 제거 */
-      padding-left: 0; /* 서브 메뉴 항목의 왼쪽 패딩을 제거 */
+    .menu-container {
+      width: 200px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
 
-      li {
-        margin-bottom: 8px; /* 각 서브 메뉴 항목의 하단 여백을 8px로 설정 */
-        padding: 4px 0; /* 서브 메뉴 항목의 상하 패딩을 4px로 설정 */
-        color: #333; /* 서브 메뉴 항목의 글자색을 어두운 회색으로 설정 */
-        cursor: pointer; /* 서브 메뉴 항목에 마우스를 올렸을 때 포인터 커서 표시 */
+      .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
 
-        &:hover {
-          color: #800000; /* 서브 메뉴 항목에 마우스를 올리면 글자색을 진한 빨간색으로 변경 */
+        .avatar {
+          width: 60px;
+          height: 60px;
+          background-color: $secondary-color;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
+
+        .user-name {
+          font-weight: bold;
+          font-size: 1.1em;
+        }
+
+        .user-id {
+          color: #888;
+          font-size: 0.8em;
+        }
+
+        h1 {
+          margin: 0 0 15px 0;
+          color: $primary-color;
+          font-size: 1.5em;
         }
       }
+
+      .menu {
+        border-top: 1px solid $secondary-color;
+        padding-top: 10px;
+
+        .menu-item {
+          padding: 8px 0;
+          font-weight: bold;
+          color: $primary-color;
+          font-size: 0.9em;
+
+          &::before {
+            content: '◆';
+            color: $primary-color;
+            margin-right: 8px;
+          }
+        }
+
+        .submenu {
+          padding-left: 25px;
+
+          .submenu-item {
+            padding: 10px 0;
+            border-bottom: 1px solid $secondary-color;
+            color: $text-color;
+            font-size: 0.8em;
+          }
+        }
+      }
+    }
+
+    &.open .menu-container {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

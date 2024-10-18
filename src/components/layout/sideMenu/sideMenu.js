@@ -3,7 +3,7 @@ import { ChevronRight, ChevronDown } from 'lucide-react';
 import "./sideMenu.scss";
 
 
-const SideMenu = () => {
+function SideMenu() {
   const [activeMenu, setActiveMenu] = useState(null);
 
   const menuItems = [
@@ -13,7 +13,7 @@ const SideMenu = () => {
     { id: 4, title: '재고관리', subItems: ['매장재고현황', '타매장재고현황', '품번별 수불현황', '일자별 수불현황', '재고실사등록', '재고실사등록(세로)', '재고실사업로드', '실사파일업로드', '재고실사현황', '과부족현황'] },
     { id: 5, title: '고객관리', subItems: ['고객등록', '고객정보조회', '고객별구매현황', '구매정'] }
   ];
-  
+
 
   const toggleSubMenu = (id) => {
     setActiveMenu(activeMenu === id ? null : id);
@@ -49,6 +49,6 @@ const SideMenu = () => {
       </div>
     </>
   );
-};
+}
 
 export default SideMenu;

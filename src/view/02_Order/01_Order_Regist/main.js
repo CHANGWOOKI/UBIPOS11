@@ -38,7 +38,7 @@ const OrderRegiste = () => {
                         </div>
                     </main>
                     <div class="grid">
-
+                        <agGrid />
                     </div>
                     <div class="grid2">
 

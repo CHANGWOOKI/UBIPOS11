@@ -1,134 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap'); /* Noto Sans KR 폰트를 가져옴 */
-
 .top-menu {
-  display: inline-flex; /* 메뉴를 수평으로 나란히 배치 */
-  justify-content: space-between; /* 메뉴 항목들을 좌우로 균등하게 배치 */
-  align-items: center; /* 메뉴 항목들을 세로 중앙 정렬 */
-  padding: 10px 20px; /* 상하 패딩 10px, 좌우 패딩 20px 설정 */
-  background-color: #f8f8f8; /* 배경색을 연한 회색으로 설정 */
-  border-bottom: 1px solid #e0e0e0; /* 하단에 연한 회색의 경계선 추가 */
-  font-family: 'Noto Sans KR', sans-serif; /* 폰트를 Noto Sans KR로 설정 */
-  height: 50px; /* 높이를 50px로 설정하여 사이드 메뉴와 위쪽 끝선을 맞춤 */ /* 높이를 화면 전체에 맞춤 (사이드 메뉴와 동일한 높이 설정) */
-  
-  .divider {
-    width: 1px; /* 구분선의 너비를 1px로 설정 */
-    height: 50px; /* 구분선의 높이를 50px로 설정 */
-    background-color: #e0e0e0; /* 구분선의 색상을 연한 회색으로 설정 */
-    margin: 0 30px; /* 좌우 여백을 30px로 설정 */
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #F5F6FB;
 
-  .left-section {
-    display: flex; /* 왼쪽 섹션을 수평으로 나열 */
-    align-items: center; /* 요소들을 세로 중앙 정렬 */
-
-    .menu-item {
-      margin-right: 10px; /* 각 메뉴 항목의 오른쪽 여백을 10px로 설정 */
-      font-size: 20px; /* 글자 크기를 20px로 설정 */
-      color: #333; /* 글자색을 어두운 회색으로 설정 */
-
-      &.active {
-        font-weight: 700; /* 활성화된 항목의 글자를 굵게 설정 */
-        color: #007bff; /* 활성화된 항목의 글자색을 파란색으로 설정 */
-      }
-    }
-  }
-
-  .center-section {
-    display: flex; /* 중앙 섹션을 수평으로 나열 */
-    align-items: center; /* 요소들을 세로 중앙 정렬 */
-
-    .sales-info {
-      margin-right: 20px; /* 오른쪽 여백을 20px로 설정 */
-      font-size: 18px; /* 글자 크기를 18px로 설정 */
-
-      .rank {
-        font-weight: 700; /* 랭크 정보를 굵게 표시 */
-        margin-left: 5px; /* 왼쪽 여백을 5px로 설정 */
-        color: #007bff; /* 글자색을 파란색으로 설정 */
-      }
-    }
-
-    .order-info {
-      display: flex; /* 주문 정보를 수평으로 나열 */
-      flex-direction: column; /* 세로 방향으로 정렬 */
-      font-size: 15px; /* 글자 크기를 15px로 설정 */
-
-      div {
-        margin-bottom: 5px; /* 각 항목의 하단 여백을 5px로 설정 */
-
-        span:first-child {
-          margin-right: 5px; /* 첫 번째 span의 오른쪽 여백을 5px로 설정 */
-          color: #666; /* 글자색을 연한 회색으로 설정 */
-        }
-
-        span:last-child {
-          font-weight: 700; /* 두 번째 span을 굵게 설정 */
-          color: #333; /* 글자색을 어두운 회색으로 설정 */
-        }
-      }
+  .title-section {
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
     }
   }
 
   .right-section {
-    display: flex; /* 오른쪽 섹션을 수평으로 나열 */
-    align-items: center; /* 요소들을 세로 중앙 정렬 */
+    display: flex;
+    align-items: center;
+    gap: 20px;
 
-    .icon-group {
-      display: flex; /* 아이콘 그룹을 수평으로 나열 */
-      align-items: center; /* 아이콘들을 세로 중앙 정렬 */
-      margin-right: 15px; /* 오른쪽 여백을 15px로 설정 */
+    .icon-section {
+      display: flex;
+      gap: 12px;
 
-      > * {
-        margin-right: 33px; /* 각 아이콘의 오른쪽 여백을 33px로 설정 */
+      .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e0e0e0;
+        }
+
+        svg {
+          color: #333;
+        }
       }
     }
 
-    .notification {
-      position: relative; /* 배지를 상대적인 위치로 설정하기 위해 사용 */
+    .user-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
 
-      .badge {
-        position: absolute; /* 배지를 절대 위치로 설정 */
-        top: -5px; /* 배지를 위쪽으로 5px 이동 */
-        right: -5px; /* 배지를 오른쪽으로 5px 이동 */
-        background-color: #ff4136; /* 배경색을 빨간색으로 설정 */
-        color: white; /* 글자색을 흰색으로 설정 */
-        border-radius: 50%; /* 배지를 원형으로 설정 */
-        padding: 2px 5px; /* 상하 패딩을 2px, 좌우 패딩을 5px로 설정 */
-        font-size: 10px; /* 글자 크기를 10px로 설정 */
-        font-weight: 700; /* 글자를 굵게 설정 */
-      }
-    }
-
-    .user-info {
-      display: flex; /* 사용자 정보를 수평으로 나열 */
-      align-items: center; /* 요소들을 세로 중앙 정렬 */
-      margin-right: 15px; /* 오른쪽 여백을 15px로 설정 */
-      font-size: 14px; /* 글자 크기를 14px로 설정 */
-
-      span {
-        margin-right: 5px; /* span의 오른쪽 여백을 5px로 설정 */
-        font-weight: 700; /* 글자를 굵게 설정 */
-      }
-    }
-
-    .logout-btn {
-      display: flex; /* 로그아웃 버튼 내부 요소들을 수평으로 나열 */
-      align-items: center; /* 요소들을 세로 중앙 정렬 */
-      background-color: #f0f0f0; /* 배경색을 연한 회색으로 설정 */
-      border: none; /* 테두리를 제거 */
-      border-radius: 4px; /* 모서리를 4px로 둥글게 설정 */
-      padding: 5px 10px; /* 상하 패딩 5px, 좌우 패딩 10px 설정 */
-      cursor: pointer; /* 버튼에 마우스를 올렸을 때 포인터 커서 표시 */
-      transition: background-color 0.3s; /* 배경색 변경에 0.3초 동안의 전환 효과 적용 */
-      font-family: 'Noto Sans KR', sans-serif; /* 폰트를 Noto Sans KR로 설정 */
-      font-size: 14px; /* 글자 크기를 14px로 설정 */
-
-      &:hover {
-        background-color: #e0e0e0; /* 버튼에 마우스를 올리면 배경색을 연한 회색으로 설정 */
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
       }
 
-      span {
-        margin-left: 5px; /* 왼쪽 여백을 5px로 설정 */
+      .user-name {
+        font-size: 14px;
+        font-weight: 500;
+        color: #333;
       }
     }
   }

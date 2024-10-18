@@ -1,52 +1,72 @@
-import "./style.scss";
+import React from 'react';
+import { Search, PlusCircle, Trash2 } from 'lucide-react';
+import './style.scss';
 
-const OrderRegiste = () => {
+const OrderRegister = () => {
     return (
-        <>
-            <div class="order-management">
-                <div class="content-box">
-                    <header>
-                    <h1 class="main-title"><span class="red-dot"></span>주문등록</h1>
-                        <div class="header-buttons">
-                            <button class="query-button">조회</button>
-                            <button class="new-button">신규</button>
-                            <button class="delete-button">삭제</button>
-                        </div>
-                    </header>
-                    <main>
-                        <div class="search-bar">
-                            <div class="date-range">
-                                <label>주문일자</label>
-                                <div class="date-inputs">
-                                    <input type="date" value="2024-10-15" />
-                                    <label>주문번호</label>
-                                    <input type="text" value="0001" />
-                                    <button class="search-button">검색</button>
-                                </div>
+        <div className="order-management">
+            <div className="content-box">
+                <header>
+                    <h1 className="main-title"><span className="blue-dot"></span>주문등록</h1>
+                    <div className="header-buttons">
+                        <button className="query-button">
+                            <Search size={18} />
+                            조회
+                        </button>
+                        <button className="new-button">
+                            <PlusCircle size={18} />
+                            신규
+                        </button>
+                        <button className="delete-button">
+                            <Trash2 size={18} />
+                            삭제
+                        </button>
+                    </div>
+                </header>
+                <main>
+                    <div className="search-bar">
+                        <div className="search-group">
+                            <label>주문일자</label>
+                            <div className="input-wrapper">
+                                <input type="date" defaultValue="2024-10-15" />
                             </div>
-                            <div class="search-options">
-                                <label>매장존</label>
+                        </div>
+                        <div className="search-group">
+                            <label>주문번호</label>
+                            <div className="input-wrapper">
+                                <input type="text" defaultValue="0001" />
+                                <button className="search-button">
+                                    <Search size={18} />
+                                    검색
+                                </button>
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>매장존</label>
+                            <div className="input-wrapper">
                                 <select>
                                     <option>A</option>
                                     <option>B</option>
                                 </select>
-                                <div class="checkbox-group">
-                                    <input type="checkbox" id="batch-toggle" />
-                                    <label for="batch-toggle">바로등록</label>
-                                </div>
                             </div>
                         </div>
-                    </main>
-                    <div class="grid">
-
+                        <div className="search-group">
+                            <div className="checkbox-group">
+                                <input type="checkbox" id="batch-toggle" />
+                                <label htmlFor="batch-toggle">바로등록</label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="grid2">
-
-                    </div>
+                </main>
+                <div className="grid">
+                    {/* Grid content goes here */}
+                </div>
+                <div className="grid2">
+                    {/* Grid2 content goes here */}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
-export default OrderRegiste;
+export default OrderRegister;

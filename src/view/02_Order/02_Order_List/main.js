@@ -1,52 +1,79 @@
-import "./style.scss";
+import React from 'react';
+import { Search, PlusCircle, Trash2 } from 'lucide-react';
+import './style.scss';
 
-const OrderList = () => {
+const OrderRegister = () => {
     return (
-        <>
-            <div class="order-management">
-                <div class="content-box">
-                    <header>
-                    <h1 class="main-title"><span class="red-dot"></span>주문현황</h1>
-                        <div class="header-buttons">
-                            <button class="query-button">조회</button>
-                            <button class="new-button">인쇄</button>
-                            <button class="delete-button">엑셀</button>
-                        </div>
-                    </header>
-                    <main>
-                        <div class="search-bar">
-                            <div class="date-range">
-                                <label>기간</label>
-                                <div class="date-inputs">
-                                    <input type="date" value="2024-10-01" />
-                                    <span>~</span>
-                                    <input type="date" value="2024-10-15" />
-                                </div>
-                            </div>
-                            <div class="radio-group">
-                                <label>구분</label>
-                                <div class="radio-inputs">
-                                    <input type="radio" id="all" name="category" value="all" checked />
-                                    <label for="all">전체</label>
-                                    <input type="radio" id="unprocessed" name="category" value="unprocessed" />
-                                    <label for="unprocessed">미처리</label>
-                                    <input type="radio" id="inProgress" name="category" value="inProgress" />
-                                    <label for="inProgress">진행중</label>
-                                    <input type="radio" id="completed" name="category" value="completed" />
-                                    <label for="completed">출고</label>
-                                    <input type="radio" id="reported" name="category" value="reported" />
-                                    <label for="reported">출고불가</label>
-                                </div>
-                            </div>
-                        </div>
-                    </main>
-                    <div class="grid">
-                        여기 그리드
+        <div className="order-management">
+            <div className="content-box">
+                <header>
+                    <h1 className="main-title"><span className="blue-dot"></span>주문현황</h1>
+                    <div className="header-buttons">
+                        <button className="query-button">
+                            <Search size={18} />
+                            조회
+                        </button>
+                        <button className="new-button">
+                            <PlusCircle size={18} />
+                            신규
+                        </button>
+                        <button className="delete-button">
+                            <Trash2 size={18} />
+                            삭제
+                        </button>
                     </div>
+                </header>
+                <main>
+                    <div className="search-bar">
+                        <div className="search-group">
+                            <label>기간</label>
+                            <div className="input-wrapper">
+                                <input type="date" defaultValue="2024-10-01" />
+                                <span>~</span>
+                                <input type="date" defaultValue="2024-10-15" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>구분</label>
+                            <div className="input-wrapper">
+                                <select>
+                                    <option>전체</option>
+                                    {/* Add more options as needed */}
+                                </select>
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>미처리</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="unprocessed" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>진행중</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="in-progress" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>출고</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="shipped" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>출고불가</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="returned" />
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <div className="grid">
+                    {/* Grid content goes here */}
                 </div>
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default OrderList;
+export default OrderRegister;

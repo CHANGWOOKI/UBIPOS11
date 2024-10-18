@@ -1,71 +1,66 @@
-$primary-color: #3498db;
+$primary-color: #4e69bd;
 $secondary-color: #2c3e50;
-$background-color: #ecf0f1;
-$border-color: #bdc3c7;
-$hover-color: #2980b9;
-
-// body {
-//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-//     margin: 0;
-//     padding: 10px;
-//     background-color: $background-color;
-//     color: $secondary-color;
-// }
+$background-color: #f4f7fc;
+$border-color: #d1d9e6;
+$hover-color: #3f549c;
+$text-color: #333;
+$white: #ffffff;
 
 .order-management {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    color: $secondary-color;
+    color: $text-color;
+
     .main-title {
         font-size: 25px;
         font-weight: 600;
-        color: $secondary-color;
-        margin-top: 10px;
+        color: $primary-color;
+        margin-bottom: 20px;
         display: flex;
         align-items: center;
 
-        .red-dot {
-            width: 12px;
-            height: 12px;
+        .blue-dot {
+            width: 14px;
+            height: 14px;
             background-color: $primary-color;
             border-radius: 50%;
             display: inline-block;
-            margin-right: 12px;
+            margin-right: 14px;
         }
     }
 
     .content-box {
-        background-color: white;
-        border-radius: 12px;
-        box-shadow: 4px 6px 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: $white;
+        border-radius: 16px;
+        border: 1px solid #e0e0e0;
         padding: 20px;
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 130px);
 
         header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 24px;
+            align-items: center;
 
             .header-buttons {
                 display: flex;
-                gap: 12px;
+                gap: 16px;
 
                 button {
-                    color: white;
+                    color: $white;
                     border: none;
-                    padding: 15px 25px;
-                    border-radius: 6px;
+                    padding: 12px 24px;
+                    border-radius: 8px;
                     cursor: pointer;
                     transition: all 0.3s ease;
-                    font-weight: 500;
+                    font-weight: 600;
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
-
-                    &:hover {
-                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-                    }
+                    font-size: 14px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
                 }
 
                 .query-button, .new-button, .delete-button {
@@ -78,99 +73,87 @@ $hover-color: #2980b9;
         main {
             .search-bar {
                 display: flex;
-                align-items: center;
-                border: 1px solid $border-color;
-                border-radius: 8px;
-                padding: 16px;
-                margin-bottom: 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+                background-color: $background-color;
+                border-radius: 12px;
+                padding: 20px;
+                margin-bottom: 30px;
 
-                .date-range {
+                .search-group {
                     display: flex;
                     align-items: center;
+                    gap: 10px;
 
                     label {
                         font-weight: 600;
-                        margin-right: 12px;
+                        text-align: center;
                         color: $secondary-color;
+                        min-width: 80px;
                     }
 
-                    .date-inputs {
+                    .input-wrapper {
                         display: flex;
                         align-items: center;
-
-                        input[type="date"], input[type="text"] {
-                            padding: 8px 12px;
-                            border: 1px solid $border-color;
-                            border-radius: 4px;
-                            font-size: 14px;
-                            color: $secondary-color;
-                            margin-right: 8px;
-                        }
-
-                        span {
-                            margin: 0 8px;
-                            color: $secondary-color;
-                        }
-                        .search-button {
-                            background-color: $primary-color;
-                            color: white;
-                            border: none;
-                            padding: 8px 16px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-    
-                            &:hover {
-                                background-color: $hover-color;
-                            }
-                        }
-                    }
-                }
-
-                .search-options {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-
-                    label {
-                        font-weight: 600;
-                        margin-right: 12px;
-                        color: $secondary-color;
+                        gap: 10px;
                     }
 
-                    select {
-                        padding: 8px 16px;
+                    input[type="date"], input[type="text"], select {
+                        padding: 10px 16px;
                         border: 1px solid $border-color;
-                        border-radius: 4px;
-                        background-color: white;
-                        color: $secondary-color;
+                        border-radius: 8px;
+                        font-size: 14px;
+                        color: $text-color;
+                        transition: all 0.3s ease;
+
+                        &:focus {
+                            outline: none;
+                            border-color: $primary-color;
+                            box-shadow: 0 0 0 2px rgba(78, 105, 189, 0.2);
+                        }
+                    }
+
+                    .search-button {
+                        background-color: $primary-color;
+                        color: $white;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 8px;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+
                     }
 
                     .checkbox-group {
                         display: flex;
                         align-items: center;
+                        gap: 8px;
 
                         input[type="checkbox"] {
-                            margin-right: 4px;
+                            width: 18px;
+                            height: 18px;
                         }
                     }
                 }
             }
         }
 
-        .grid {
+        .grid, .grid2 {
             flex-grow: 1;
             border: 1px solid $border-color;
-            border-radius: 4px;
-            padding: 10px;
+            border-radius: 12px;
+            padding: 20px;
             margin-bottom: 10px;
+            background-color: $white;
         }
+
         .grid2 {
             flex-grow: 4;
-            border: 1px solid $border-color;
-            border-radius: 4px;
-            padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
         }
     }
 }

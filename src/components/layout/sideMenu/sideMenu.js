@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, MessageSquare, LogOut} from 'lucide-react';
+import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, MessageSquare, LogOut, CircleEllipsis } from 'lucide-react';
 import "./sideMenu.scss";
 
 
@@ -14,7 +14,7 @@ const SideMenu = () => {
     { id: 3, title: '점간이동관리', icon: Truck },
     { id: 4, title: '재고관리', icon: PackageSearch },
     { id: 5, title: '고객관리', icon: Users },
-    { id: 6, title: '기초관리', icon: Settings },
+    { id: 6, title: '기초관리', icon: CircleEllipsis },
     { id: 7, title: '메시지관리', icon: MessageSquare },
   ];
 
@@ -52,7 +52,7 @@ const SideMenu = () => {
     {
       id: 6,
       title: '기초관리',
-      subItems: ['상품정보조회', '상품단가조회', '매장정보조회'],
+      subItems: ['상품정보조회', '상품단가조회', '매장정보조회','아르바이트 등록/현황','동업계 설정'],
     },
     {
       id: 7,
@@ -101,10 +101,9 @@ const SideMenu = () => {
         {openTab !== null && (
           <div className="menu-container">
             <div className="user-info">
-              <h1>SEWON POS</h1>
               <div className="avatar"></div>
-              <div className="user-name">롯데본점</div>
-              <div className="user-id">M0001</div>
+              <div className="user-name">세원아토스</div>
+              <div className="user-id">브랜드명</div>
             </div>
             {menuItems.filter(item => item.id === openTab).map((menu) => (
               <div key={menu.id} className="menu">

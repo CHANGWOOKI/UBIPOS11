@@ -1,18 +1,18 @@
-//import { lazy } from "react";
+import { lazy } from "react";
 
-//const SaleList = lazy(() => import("../pages/sale/saleList"));
-//const SalesRegiste = lazy(() => import("../pages/sale/SaleRegiste"));
+const SaleRegiste = lazy(() => import("../view/01_Sale/01_Sale_Regist/main"))
+const SaleMagamList = lazy(() => import("../view/01_Sale/02_Sale_Magam_List/main"))
 
 const SaleRouter = () => {
   return [
-    // {
-    //   path: 'registe',
-    //   element: <SalesRegiste />,
-    // },
-    // {
-    //   path: 'list',
-    //   element: <SaleList />,
-    // },
+    {
+      path: 'registe',
+      element: <SaleRegiste />,
+    },
+    {
+      path: 'magamList',
+      element: <SaleMagamList />,
+    },
   ];
 }
 

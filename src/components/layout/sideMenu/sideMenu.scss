@@ -76,7 +76,8 @@ $text-color: #333;
       align-items: center;
       cursor: pointer;
       color: #fff;
-      transition: background-color 0.3s ease;
+//      transition: background-color 0.3s == ease;      
+      transition: background-color 0.0s == ease;
       margin: 5px 0;
 
       &:hover {
@@ -94,6 +95,7 @@ $text-color: #333;
 
     &.open {
       width: 240px;
+      border-right: 1px solid #e0e0e0;
     }
 
     .menu-container {
@@ -154,12 +156,15 @@ $text-color: #333;
 
         .submenu {
           padding-left: 25px;
-
+          
           .submenu-item {
             padding: 10px 0;
             border-bottom: 1px solid $secondary-color;
             color: $text-color;
             font-size: 0.8em;
+            display: block;
+            white-space: nowrap;
+            text-decoration: none; // 밑줄 제거
           }
         }
       }

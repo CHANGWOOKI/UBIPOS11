@@ -1,7 +1,7 @@
 const SaleRegiste = () => {
     return(
         <>
-        
+            판매등록
         </>
     )
 }

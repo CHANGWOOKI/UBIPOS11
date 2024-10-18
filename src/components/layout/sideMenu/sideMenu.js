@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, MessageSquare, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaUser } from 'react-icons/fa';
 import "./sideMenu.scss";
 
 
@@ -169,7 +170,9 @@ const SideMenu = () => {
         {openTab !== null && (
           <div className="menu-container">
             <div className="user-info">
-              <div className="avatar"></div>
+              <div className="avatar">
+                
+              </div>
               <div className="user-name">롯데본점</div>
               <div className="user-id">M0001</div>
             </div>

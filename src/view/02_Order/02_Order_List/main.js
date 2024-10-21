@@ -1,8 +1,7 @@
 import "./style.scss";
 import React, { useState } from 'react';
+import { Search, PlusCircle, Trash2 } from 'lucide-react';
 import GridComponent from "../../../components/grid/gridComponent";
-
-
 const OrderList = () => {
     const initialData = [
         {
@@ -78,14 +77,11 @@ const OrderList = () => {
             status: '완료',
         },
     ];
-
-
     // 상태: 조회된 데이터와 필터 조건
     const [orders, setOrders] = useState(initialData);
     const [startDate, setStartDate] = useState('2024-10-01');
     const [endDate, setEndDate] = useState('2024-10-15');
     const [orderType, setOrderType] = useState('전체');
-
     // 조회 버튼 클릭 시 데이터를 필터링하는 함수
     const handleSearch = () => {
         const filteredData = initialData.filter(order => {
@@ -95,7 +91,6 @@ const OrderList = () => {
         });
         setOrders(filteredData);
     };
-
     // OrderList에 맞는 컬럼 설정
     const columns = [
         { dataField: 'orderId', caption: 'NO.', width: 50 },
@@ -120,63 +115,78 @@ const OrderList = () => {
         { dataField: 'shippedQuantity', caption: '출고수량' },
         { dataField: 'remarks', caption: '비고' },
     ];
-
     return (
-        <>
-            <div class="order-management">
-                <div class="content-box">
-                    <header>
-                        <h1 class="main-title"><span class="red-dot"></span>주문현황</h1>
-                        <div class="header-buttons">
-                            <button class="query-button">조회</button>
-                            <button class="new-button">인쇄</button>
-                            <button class="delete-button">엑셀</button>
-                        </div>
-                    </header>
-                    <main>
-                        <div class="search-bar">
-                            <div class="date-range">
-                                <label>기간</label>
-                                <div class="date-inputs">
-                                    <input type="date" value="2024-10-01" />
-                                    <span>~</span>
-                                    <input type="date" value="2024-10-15" />
-                                </div>
-                            </div>
-                            <div class="radio-group">
-                                <label>구분</label>
-                                <div class="radio-inputs">
-                                    <input type="radio" id="all" name="category" value="all" checked />
-                                    <label for="all">전체</label>
-                                    <input type="radio" id="unprocessed" name="category" value="unprocessed" />
-                                    <label for="unprocessed">미처리</label>
-                                    <input type="radio" id="inProgress" name="category" value="inProgress" />
-                                    <label for="inProgress">진행중</label>
-                                    <input type="radio" id="completed" name="category" value="completed" />
-                                    <label for="completed">출고</label>
-                                    <input type="radio" id="reported" name="category" value="reported" />
-                                    <label for="reported">출고불가</label>
-                                </div>
+        <div className="order-management">
+            <div className="content-box">
+                <header>
+                    <h1 className="main-title"><span className="blue-dot"></span>주문현황</h1>
+                    <div className="header-buttons">
+                        <button className="query-button">
+                            <Search size={18} />
+                            조회
+                        </button>
+                        <button className="new-button">
+                            <PlusCircle size={18} />
+                            신규
+                        </button>
+                        <button className="delete-button">
+                            <Trash2 size={18} />
+                            삭제
+                        </button>
+                    </div>
+                </header>
+                <main>
+                    <div className="search-bar">
+                        <div className="search-group">
+                            <label>기간</label>
+                            <div className="input-wrapper">
+                                <input type="date" defaultValue="2024-10-01" />
+                                <span>~</span>
+                                <input type="date" defaultValue="2024-10-15" />
                             </div>
                         </div>
-                    </main>
-                    <div class="grid">
+                        <div className="search-group">
+                            <label>구분</label>
+                            <div className="input-wrapper">
+                                <label>전체</label>
+                                <div className="input-wrapper">
+                                    <input type="checkbox" id="unprocessed" />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>미처리</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="unprocessed" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>진행중</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="in-progress" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>출고</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="shipped" />
+                            </div>
+                        </div>
+                        <div className="search-group">
+                            <label>출고불가</label>
+                            <div className="input-wrapper">
+                                <input type="checkbox" id="returned" />
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                <div className="grid">
                         <div className="order-list">
                             <GridComponent columns={columns} dataSource={orders} />
                         </div>
-
-
-
-                    </div>
                 </div>
             </div>
-
-
-
-
-
-        </>
-    )
+        </div>
+    );
 }
-
 export default OrderList;

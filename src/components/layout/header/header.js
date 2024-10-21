@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
 import './header.scss';
-import { MessageCircle, Bell, HelpCircle, Search, Mail, Headset } from 'lucide-react';
+import {Bell, Mail, Headset } from 'lucide-react';
 
 const Header = () => {
   return (
     <div className="top-menu">
       <div className="title-section">
-        <h1>SEWON POS</h1>
+        <div className='sewon-logo'>SEWON POS</div>
       </div>
       <div className="right-section">
         <div className="icon-section">

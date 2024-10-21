@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, MessageSquare, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
 import "./sideMenu.scss";
 
 
@@ -136,7 +135,7 @@ const SideMenu = () => {
       setOpenTab(null);
       navigate('/main');
     } else {
-      setActiveTab(id === id ? null : id);
+      setActiveTab(activeTab === id ? null : id);
       setOpenTab(openTab === id ? null : id);
     }
   };

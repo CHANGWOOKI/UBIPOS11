@@ -2,15 +2,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 40px;
   background-color: #FFFFFF;
 
   .title-section {
-    h1 {
-      font-size: 24px;
+    sewon-logo {
+      font-size: x-large;
       font-weight: bold;
       color: #333;
-      padding-left: 11px;
     }
   }
 
@@ -72,8 +71,10 @@
         height: 40px;
         background-color: #FFFFFF;
         border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: background-color 0.3s ease;
+        
 
         &:hover {
           background-color: #e0e0e0;
@@ -81,6 +82,7 @@
 
         svg {
           color: #333;
+          
         }
       }
     }
@@ -90,7 +92,7 @@
       align-items: center;
       gap: 10px;
       padding: 10px 20px;
-      box-shadow: #666;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
       background: whitesmoke;
 
       .user-avatar {

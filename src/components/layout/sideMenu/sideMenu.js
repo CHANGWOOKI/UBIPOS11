@@ -144,7 +144,6 @@ const SideMenu = () => {
   return (
     <div className="container">
       <div className="sidebar">
-        <div className="logo"></div>
         <div className="tabs">
           {tabs.map((tab) => (
             <div
@@ -170,11 +169,8 @@ const SideMenu = () => {
         {openTab !== null && (
           <div className="menu-container">
             <div className="user-info">
-              <div className="avatar">
-                
-              </div>
-              <div className="user-name">롯데본점</div>
-              <div className="user-id">M0001</div>
+              <div className="user-name">세원아토스</div>
+              <div className="user-id">고객지원팀</div>
             </div>
             {menuItems.filter(item => item.id === openTab).map((menu) => (
               <div key={menu.id} className="menu">

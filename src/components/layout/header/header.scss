@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: white;
+  background-color: #FFFFFF;
 
   .title-section {
     h1 {
@@ -23,13 +23,54 @@
       display: flex;
       gap: 12px;
 
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 5px 10px;
+        width: 320  px;
+        
+        .search-input {
+          flex-grow: 1;
+          border: none;
+          outline: none;
+          font-size: 16px;
+          padding: 5px;
+          background: transparent;
+          
+          &::placeholder {
+            color: #aaa;
+          }
+        }
+        
+        .search-button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          svg {
+            color: #aaa;
+          }
+          
+          &:hover svg {
+            color: #666;
+          }
+        }
+      }
+
       .icon-wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 40px;
         height: 40px;
-        background-color: #f0f0f0;
+        background-color: #FFFFFF;
         border-radius: 50%;
         cursor: pointer;
         transition: background-color 0.3s ease;
@@ -48,7 +89,9 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      padding-right: 20px;
+      padding: 10px 20px;
+      box-shadow: #666;
+      background: whitesmoke;
 
       .user-avatar {
         width: 40px;

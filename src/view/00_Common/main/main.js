@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 const Main = () => {
     return (
         <>
-            공지사항 통계
-            <Link to={"/order/registe"}>
-                <button>주문등록</button>
-            </Link>
-            <Link to={"/order/list"}>
-                <button>주문현황</button>
-            </Link>
+            <div>
+                메인화면입니다.
+                통게 공지 RT 등등 들어갈 예정입니다.
+            </div>
         </>
     );
 }

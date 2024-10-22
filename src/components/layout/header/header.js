@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div className="top-menu">
       <div className="title-section">
-        <h1>SEWON POS</h1>
+      <img src="https://www.sewonatos.co.kr/img/sewon_logo.png" alt="SEWON" className="logo" />
       </div>
       <div className="right-section">
         <div className="icon-section">

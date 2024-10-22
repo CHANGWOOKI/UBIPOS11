@@ -1,0 +1,220 @@
+// ProductSearchPopup.scss
+
+.product-search-popup {
+    // Dialog 스타일링
+    .MuiDialog-paper {
+      min-width: 800px;
+      max-width: 1200px !important;
+      background: linear-gradient(to bottom, #ffffff, #fafafa);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      
+      // 애니메이션 효과
+      animation: dialogFadeIn 0.3s ease-out;
+      
+      @keyframes dialogFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  
+    // Dialog 헤더
+    .MuiDialogTitle-root {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 16px 24px;
+      border-bottom: 1px solid #dee2e6;
+      
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #343a40;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        
+        &::before {
+          content: '🔍';
+          margin-right: 10px;
+          font-size: 1.2rem;
+        }
+      }
+    }
+  
+    // Dialog 컨텐츠
+    .MuiDialogContent-root {
+      padding: 24px;
+      
+      // 검색 필드
+      .MuiTextField-root {
+        margin-bottom: 24px;
+        
+        .MuiOutlinedInput-root {
+          transition: all 0.3s ease;
+          
+          &:hover {
+            .MuiOutlinedInput-notchedOutline {
+              border-color: #4dabf7;
+            }
+          }
+          
+          &.Mui-focused {
+            .MuiOutlinedInput-notchedOutline {
+              border-color: #228be6;
+              border-width: 2px;
+            }
+          }
+        }
+        
+        .MuiInputLabel-root {
+          color: #495057;
+          
+          &.Mui-focused {
+            color: #228be6;
+          }
+        }
+      }
+      
+      // 테이블 스타일링
+      .MuiTableContainer-root {
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        
+        .MuiTable-root {
+          border-collapse: separate;
+          border-spacing: 0;
+          
+          // 테이블 헤더
+          .MuiTableHead-root {
+            .MuiTableRow-root {
+              background-color: #f8f9fa;
+              
+              .MuiTableCell-head {
+                font-weight: 600;
+                color: #495057;
+                border-bottom: 2px solid #dee2e6;
+                padding: 16px;
+                text-transform: uppercase;
+                font-size: 0.8rem;
+                letter-spacing: 0.5px;
+              }
+            }
+          }
+          
+          // 테이블 바디
+          .MuiTableBody-root {
+            .MuiTableRow-root {
+              transition: background-color 0.2s ease;
+              
+              &:hover {
+                background-color: #f1f3f5;
+              }
+              
+              .MuiTableCell-body {
+                padding: 12px 16px;
+                border-bottom: 1px solid #e9ecef;
+                color: #495057;
+                font-size: 0.9rem;
+                
+                // 품번 셀 특별 스타일링
+                &:first-child {
+                  font-family: monospace;
+                  color: #228be6;
+                  font-weight: 500;
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      // 선택 버튼
+      .MuiButton-contained {
+        background-color: #228be6;
+        color: white;
+        font-size: 0.8rem;
+        padding: 4px 12px;
+        min-width: 64px;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          background-color: #1c7ed6;
+          box-shadow: 0 2px 8px rgba(34, 139, 230, 0.3);
+        }
+      }
+    }
+  
+    // Dialog 액션 영역
+    .MuiDialogActions-root {
+      padding: 16px 24px;
+      border-top: 1px solid #dee2e6;
+      background-color: #f8f9fa;
+      
+      .MuiButton-root {
+        text-transform: none;
+        font-weight: 500;
+        padding: 6px 16px;
+        
+        &.MuiButton-text {
+          color: #495057;
+          
+          &:hover {
+            background-color: #e9ecef;
+          }
+        }
+      }
+    }
+  
+    // 스크롤바 커스터마이징
+    .MuiDialogContent-root {
+      &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: #f1f3f5;
+        border-radius: 4px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #adb5bd;
+        border-radius: 4px;
+        
+        &:hover {
+          background: #868e96;
+        }
+      }
+    }
+  
+    // 반응형 스타일링
+    @media (max-width: 960px) {
+      .MuiDialog-paper {
+        min-width: 95vw;
+        margin: 16px;
+      }
+      
+      .MuiTableContainer-root {
+        overflow-x: auto;
+        
+        .MuiTable-root {
+          min-width: 800px;
+        }
+      }
+    }
+  }
+  
+  // 애니메이션 효과
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

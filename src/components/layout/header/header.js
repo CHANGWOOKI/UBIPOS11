@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Bell, Mail, Headset, Sun, Moon } from 'lucide-react';
 import './header.scss';
-import { MessageCircle, Bell, HelpCircle, Search, Mail, Headset } from 'lucide-react';
 
 const Header = () => {
+  const [isToggled, setIsToggled] = useState(false);
+
   return (
     <div className="top-menu">
       <div className="title-section">
-      <img src="https://www.sewonatos.co.kr/img/sewon_logo.png" alt="SEWON" className="logo" />
+        <img src="https://www.sewonatos.co.kr/img/sewon_logo.png" alt="SEWON" className="logo" />
       </div>
       <div className="right-section">
         <div className="icon-section">
@@ -19,22 +21,29 @@ const Header = () => {
               </svg>
             </button>
           </div>
-          {/* 쪽지 */}
           <div className="icon-wrapper">
             <Mail size={20} />
           </div>
-          {/* 공지 */}
           <div className="icon-wrapper">
             <Bell size={20} />
           </div>
-          {/* 원격지원 */}
           <div className="icon-wrapper">
-            <Headset  size={20} />
+            <Headset size={20} />
           </div>
         </div>
-        {/* 매장명과 슬라이드 형식에 다크모드 들어갈 예정 */}
-        <div className="user-section">
-          <span className="user-name">롯데본점</span>
+        <div className="toggle-section">
+          <div className={`toggle-container ${isToggled ? 'active' : ''}`} onClick={() => setIsToggled(!isToggled)}>
+            <div className="toggle-background"></div>
+            <div className="toggle-text">
+              <span className="toggle-on">
+                <Sun size={18} />
+              </span>
+              <span className="store-name">롯데본점</span>
+              <span className="toggle-off">
+                <Moon size={18} />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>

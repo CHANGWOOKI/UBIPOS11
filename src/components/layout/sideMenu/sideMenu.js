@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, MessageSquare, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
 import "./sideMenu.scss";
 
 
@@ -136,7 +135,7 @@ const SideMenu = () => {
       setOpenTab(null);
       navigate('/main');
     } else {
-      setActiveTab(id === id ? null : id);
+      setActiveTab(activeTab === id ? null : id);
       setOpenTab(openTab === id ? null : id);
     }
   };
@@ -160,9 +159,11 @@ const SideMenu = () => {
           <div className="icon-button">
             <Settings size={24} />
           </div>
-          <div className="icon-button">
-            <LogOut size={24} />
-          </div>
+          <Link to={"/"}>
+            <div className="icon-button">
+              <LogOut size={24} />
+            </div>
+          </Link>
         </div>
       </div>
       <div className={`main-content ${openTab !== null ? 'open' : ''}`}>
@@ -189,7 +190,7 @@ const SideMenu = () => {
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 };
 

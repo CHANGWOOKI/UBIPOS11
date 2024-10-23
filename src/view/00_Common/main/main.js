@@ -23,15 +23,15 @@ const SalesStatusCard = ({ title, stats }) => {
     }
 
     chartInstance.current = new Chart(ctx, {
-      type: 'line',
+      type: 'bar',
       data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        labels: ['월', '화', '수', '목', '금', '토', '일'],
         datasets: [
           {
             label: '매출액',
             data: [1200, 1900, 3000, 5000, 2300, 3400, 4200],
             fill: false,
-            borderColor: '#4de8c2',
+            borderColor: '#4E69BD',
             tension: 0.1,
           },
         ],

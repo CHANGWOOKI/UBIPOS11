@@ -1,202 +1,225 @@
-$primary-color: #4e69bd;
-$secondary-color: #2c3e50;
-$background-color: #f4f7fc;
-$border-color: #d1d9e6;
-$hover-color: #3f549c;
-$text-color: #333;
-$white: #ffffff;
-
 .order-management {
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    color: $text-color;
-    max-height: 100%;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #1a1f36;
     height: 100%;
 
     .main-title {
-        font-size: 25px;
-        font-weight: 600;
-        color: $primary-color;
-        margin-bottom: 20px;
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a1f36;
         display: flex;
         align-items: center;
 
         .blue-dot {
-            width: 14px;
-            height: 14px;
-            background-color: $primary-color;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
             border-radius: 50%;
             display: inline-block;
-            margin-right: 14px;
+            margin-right: 12px;
+            box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
         }
     }
 
     .content-box {
-        background-color: #F5F6FB;
-        border-radius: 16px;
+        background-color: transparent;
+        border-radius: 20px;
         display: flex;
         flex-direction: column;
-        height: calc(100vh - 110px);
+        height: calc(100vh - 130px);
+        gap: 20px;
 
         header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: $white;
-            border-radius: 12px 12px 0 0;
-            padding: 10px;
-
-            .header-buttons {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+            
+            .header-top {
                 display: flex;
-                gap: 16px;
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px 24px;
+                border-bottom: 1px solid #e5e7eb;
 
-                button {
-                    color: $white;
-                    border: none;
-                    padding: 12px 24px;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    font-weight: 600;
-                    text-transform: uppercase;
-                    letter-spacing: 0.5px;
-                    font-size: 14px;
+                .header-buttons {
+                    display: flex;
+                    gap: 12px;
+
+                    button {
+                        color: #ffffff;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 12px;
+                        cursor: pointer;
+                        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                        font-weight: 500;
+                        font-size: 14px;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        height: 42px;
+                        background-color: #4e69bd;
+
+                        &:active {
+                            transform: scale(0.98);
+                        }
+
+                        &:hover {
+                            background-color: #3f549c;
+                            box-shadow: 0 4px 12px rgba(78, 105, 189, 0.2);
+                        }
+                    }
+                }
+            }
+
+            .search-bar {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 24px;
+                padding: 16px 24px;
+                background: #f8fafc;
+                border-radius: 0 0 16px 16px;
+
+                .search-group {
                     display: flex;
                     align-items: center;
-                    gap: 8px;
+                    gap: 16px;
+                    height: 42px;
+
+                    label {
+                        font-weight: 600;
+                        color: #4b5563;
+                        font-size: 14px;
+                    }
+
+                    .input-wrapper {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        height: 42px;
+
+                        .standard-input {
+                            padding: 0 16px;
+                            border: 1px solid #e5e7eb;
+                            border-radius: 12px;
+                            font-size: 14px;
+                            color: #1f2937;
+                            background: white;
+                            transition: all 0.2s ease;
+                            min-width: 150px;
+                            height: 42px;
+                            
+                            &:focus {
+                                outline: none;
+                                border-color: #4e69bd;
+                                box-shadow: 0 0 0 4px rgba(78, 105, 189, 0.1);
+                            }
+
+                            &:hover {
+                                border-color: #4e69bd;
+                            }
+                        }
+
+                        input[type="date"].standard-input {
+                            min-width: 150px;
+                            padding: 0 16px;
+                        }
+
+                        select.standard-input {
+                            appearance: none;
+                            padding: 0 36px 0 16px;
+                            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236B7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+                            background-repeat: no-repeat;
+                            background-position: right 8px center;
+                            background-size: 14px;
+                            cursor: pointer;
+                        }
+                    }
                 }
 
-                .query-button, .new-button, .delete-button {
-                    background-color: $primary-color;
-                    &:hover { background-color: $hover-color; }
+                .instant-register-btn {
+                    padding: 0 20px;
+                    border-radius: 12px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: #4b5563;
+                    background-color: white;
+                    border: 1px solid #e5e7eb;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+                    height: 42px;
+                    min-width: 100px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    &:hover {
+                        border-color: #4e69bd;
+                        color: #4e69bd;
+                    }
+
+                    &.active {
+                        background-color: #4e69bd;
+                        color: white;
+                        border-color: #4e69bd;
+
+                        &:hover {
+                            background-color: #3f549c;
+                        }
+                    }
                 }
             }
         }
 
         main {
-            .search-bar {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 24px;
-                background-color: $white;
-                border-radius: 0 0 12px 12px;
-                padding: 15px;
-                margin-bottom: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            min-height: 0;
 
-                .date-range {
-                    display: flex;
-                    align-items: center;
+            .grid {
+                background: white;
+                border-radius: 16px;
+                padding: 20px;
+                box-shadow: 0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+                overflow: hidden;
 
-                    label {
-                        font-weight: 600;
-                        color: $secondary-color;
-                        margin-right: 12px;
-                    }
-
-                    .date-inputs {
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-
-                        input[type="date"], input[type="text"] {
-                            padding: 8px 12px;
-                            border: 1px solid $border-color;
-                            border-radius: 4px;
-                            font-size: 14px;
-                            color: $text-color;
-                            transition: all 0.3s ease;
-
-                            &:focus {
-                                outline: none;
-                                border-color: $primary-color;
-                                box-shadow: 0 0 0 2px rgba(78, 105, 189, 0.2);
-                            }
-                        }
-
-                        .search-button {
-                            background-color: $primary-color;
-                            color: $white;
-                            border: none;
-                            padding: 8px 16px;
-                            border-radius: 4px;
-                            cursor: pointer;
-                            transition: all 0.3s ease;
-                            font-weight: 500;
-
-                            &:hover {
-                                background-color: $hover-color;
-                            }
-                        }
-                    }
+                &.primary {
+                    flex: 3; // 30%
                 }
 
-                .search-options {
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
+                &.secondary {
+                    flex: 7; // 70%
+                }
 
-                    label {
-                        font-weight: 600;
-                        color: $secondary-color;
-                    }
-
-                    select {
-                        padding: 8px 16px;
-                        border: 1px solid $border-color;
-                        border-radius: 4px;
-                        background-color: $white;
-                        color: $text-color;
-                        transition: all 0.3s ease;
-
-                        &:focus {
-                            outline: none;
-                            border-color: $primary-color;
-                            box-shadow: 0 0 0 2px rgba(78, 105, 189, 0.2);
-                        }
-                    }
-
-                    .checkbox-group {
-                        display: flex;
-                        align-items: center;
-                        gap: 6px;
-
-                        input[type="checkbox"] {
-                            width: 16px;
-                            height: 16px;
-                            cursor: pointer;
-                        }
-
-                        label {
-                            font-weight: normal;
-                        }
-                    }
+                :global(.ag-root-wrapper) {
+                    border: none;
+                    border-radius: 12px;
                 }
             }
-        }
 
-        .grid {
-            background-color: $white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 10px;
-            flex: 1;
-        }
+            :global(.ag-header) {
+                background: #f9fafb;
+                border-bottom: 1px solid #e5e7eb;
+            }
 
-        .grid2 {
-            background-color: $white;
-            border-radius: 12px;
-            padding: 20px;
-            flex: 4;
+            :global(.ag-header-cell) {
+                font-weight: 600;
+                color: #4b5563;
+            }
+
+            :global(.ag-row-even) {
+                background-color: #f9fafb;
+            }
+
+            :global(.ag-row-odd) {
+                background-color: white;
+            }
+
+            :global(.ag-row:hover) {
+                background-color: #f3f4f6;
+            }
         }
-        .search-button2 {
-            background-color: $primary-color;
-            color: $white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
     }
-}
 }

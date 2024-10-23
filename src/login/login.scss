@@ -1,139 +1,275 @@
+// login.scss
 .page-container {
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #fff;
+  overflow: hidden;
+  justify-content: center;
 }
 
-.login-container {
-  width: 1000px;
-  margin: auto;
-  display: flex;
-  gap: 20px;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
-
-.notice-section {
+.content-wrapper {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2vh;
+  max-height: 90vh;
+}
 
-  .notice-header {
-    background: #4b70c3;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 5px 5px 0 0;
-    font-weight: 500;
+.header-container {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1vh;
 
-    &.apparel {
-      margin-top: 18px;
-    }
+  .main-title {
+    font-size: 5vh;
+    color: #666;
+    font-weight: 400;
+    margin: 0;
+    padding-left: 2vh;
   }
 
-  .notice-content {
+  .website {
+    display: inline-block;
+    color: #666;
+    font-size: 1.6vh;
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 4vh 3vh 0 0;
+    
+
+    &:hover {
+      color: #4e69bd;
+    }
+  }
+}
+
+.main-content-login {
+  display: flex;
+  border-radius: 16px;
+  border: 1px solid #e4e5e6;
+  gap: 2vw;
+  width: 60%;
+  height: 59vh;
+  max-height: 800px;
+
+  .notice-section {
+    padding: 20px;
+    flex: 1;
+    overflow: hidden;
+    
+    .notice-type {
+      display: inline-block;
+      background: linear-gradient(135deg, #4e69bd, #3f549c);
+      color: white;
+      padding: 0.8vh 1.5vw;
+      border-radius: 6px;
+      margin-bottom: 1.5vh;
+      font-size: 1.6vh;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(78, 105, 189, 0.15);
+    }
+  
+    .notice-list {
+      padding-left: 5px;
+      background: #fff;
+      border-radius: 8px;
+      padding-bottom: 2vh;
+    }
+  
     .notice-item {
       display: flex;
       justify-content: space-between;
-      padding: 9px 10px;
-      border: 1px solid #eee;
-      border-bottom: none;
-      font-size: 12px;
-
-      span {
-        &.date {
-          color: #666;
-          font-size: 13px;
+      padding: 1vh 1.2vh;
+      font-size: 1.4vh;
+      color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-bottom: 1px solid #eef0f2;
+      transition: all 0.2s ease;
+  
+      &:hover {
+        background-color: #f8f9fa;
+        padding-left: 1.5vh;
+  
+        .date {
+          background: #fff;
         }
       }
-    }
-    .notice-item:last-child {
-      border-radius: 0 0 5px 5px;
-      border-bottom: 1px solid #eee;
+  
+      span {
+        position: relative;
+  
+        &.date {
+          color: #888;
+          font-size: 1.4vh;
+          margin-left: 1vw;
+          flex-shrink: 0;
+          padding: 0.2vh 0.8vh;
+          border-radius: 3px;
+          transition: background-color 0.2s ease;
+        }
+      }
     }
   }
 }
 
 .login-section {
-  width: 350px;
-  height: 450px;
-  background: #f1f2f6;
-  padding: 20px;
-  border-radius: 4px;
+  width: 30%;
+  min-width: 200px;
+  background: #f8f9fa;
+  padding: 2vh 2vw;
+  border-radius: 0 16px 16px 0;
+  display: flex;
+  flex-direction: column;
 
   h2 {
+    color: #666;
     text-align: center;
-    margin: 0 0 30px 0;
-    font-size: 40px;
-    font-weight: bold;
+    margin-bottom: 2vh;
+    font-size: 2.5vh;
+    font-weight: 400;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 1.5vh;
 
     input {
-      padding: 20px 10px;
+      padding: 2vh 1vw;
       border: 1px solid #ddd;
       border-radius: 4px;
-      font-size: 14px;
+      font-size: 1.6vh;
 
       &:focus {
         outline: none;
-        border-color: #4b70c3;
+        border-color: #4e69bd;
+      }
+
+      &[type="checkbox"] {
+        width: auto;
+        margin-right: 0.5vw;
+      }
+    }
+
+    .password-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 100%;
+        padding-right: 40px;
+      }
+
+      .password-toggle {
+        position: absolute;
+        right: 10px;
+        background: none;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          color: #4e69bd;
+        }
+
+        &:focus {
+          outline: none;
+        }
       }
     }
 
     .checkbox-wrap {
       display: flex;
       align-items: center;
-      gap: 8px;
-      margin: 5px 0;
+      gap: 0.5vw;
+      margin: 0.5vh 0;
 
       label {
-        font-size: 14px;
+        font-size: 1.4vh;
         color: #666;
       }
     }
 
-    button {
-      background: #4b70c3;
+    button[type="submit"] {
+      background: #4e69bd;
       color: white;
-      padding: 12px;
+      padding: 2vh;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      font-size: 16px;
-      margin-top: 50px;
+      font-size: 1.8vh;
+      margin-top: 8vh;
 
       &:hover {
-        background: darken(#4b70c3, 5%);
+        background: #3f549c;
       }
     }
 
     .help-text {
       text-align: center;
       color: #666;
-      font-size: 14px;
+      font-size: 1.4vh;
       text-decoration: none;
-      display: block;
+      margin-top: 1vh;
 
       &:hover {
-        text-decoration: underline;
+        color: #4e69bd;
       }
     }
   }
 }
 
 .footer {
+  width: 100%;
+  padding: 2vh 0;
+  border-top: 1px solid #eee;
+  background: white;
   margin-top: auto;
-  background: #343a40;
-  color: white;
-  text-align: center;
-  font-size: 14px;
+  
+  .company-info {
+    text-align: center;
+    margin-bottom: 1vh;
 
-  p {
-    margin: 5px;
+    .info-row {
+      margin-bottom: 0.5vh;
+      color: #666;
+      font-size: 1.4vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+      padding: 0 2vw;
+      white-space: nowrap;
+
+      span {
+        position: relative;
+        padding: 0 1vw;
+
+        &:not(:last-child)::after {
+          content: '|';
+          position: absolute;
+          right: 0;
+          color: #ddd;
+        }
+      }
+    }
+
+    .copyright {
+      color: #888;
+      font-size: 1.2vh;
+    }
   }
 }

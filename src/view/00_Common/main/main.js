@@ -1,20 +1,27 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
+import {
+  Building2,
+  Truck,
+  PackageCheck,
+  FileText,
+  TrendingUp,
+  AlertCircle,
+  Mail
+} from 'lucide-react';
 import "./style.scss";
 
 const SalesStatusCard = ({ title, stats }) => {
   const chartRef = useRef(null);
-  const chartInstance = useRef(null); // 차트 인스턴스를 관리할 ref 추가
+  const chartInstance = useRef(null);
 
   useEffect(() => {
     const ctx = chartRef.current.getContext('2d');
 
-    // 기존 차트가 있으면 먼저 파괴
     if (chartInstance.current) {
       chartInstance.current.destroy();
     }
 
-    // 새 차트 생성
     chartInstance.current = new Chart(ctx, {
       type: 'line',
       data: {
@@ -45,18 +52,19 @@ const SalesStatusCard = ({ title, stats }) => {
       },
     });
 
-    // 컴포넌트가 언마운트되거나 업데이트될 때 차트를 제거
     return () => {
       if (chartInstance.current) {
         chartInstance.current.destroy();
       }
     };
-  }, [stats]); // stats가 변경될 때마다 차트를 업데이트
+  }, [stats]);
 
   return (
     <div className="vet-dash__card vet-dash__card--wide">
       <div className="vet-dash__header">
-        <span className="vet-dash__icon">📈</span>
+        <span className="vet-dash__icon">
+          <TrendingUp size={24} />
+        </span>
         <h2>{title}</h2>
       </div>
       <div className="vet-dash__traction">
@@ -76,45 +84,65 @@ const SalesStatusCard = ({ title, stats }) => {
   );
 };
 
+const renderTableCard = (card) => {
 
-// 테이블 형식 카드 렌더링 함수 (renderTableCard)
-const renderTableCard = (card) => (
-  <div key={card.id} className="vet-dash__card">
-    <div className="vet-dash__header">
-      <span className="vet-dash__icon">{card.icon}</span>
-      <h2>{card.title}</h2>
-      {card.hasAddButton && <button className="vet-dash__btn-add">+</button>}
-    </div>
-    <div className="vet-dash__table-container">
-      <table className="vet-dash__table">
-        <thead>
-          <tr>
-            {card.columns?.map((column, index) => (
-              <th key={index}>{column}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {card.data.map((row, index) => (
-            <tr key={index}>
-              {card.columns?.map((column, colIndex) => (
-                <td key={colIndex}>{row[column]}</td>
+  const getIcon = (type) => {
+    switch (type) {
+      case 'headquarters':
+        return <Building2 size={24} />;
+      case 'outbound':
+        return <Truck size={24} />;
+      case 'inbound':
+        return <PackageCheck size={24} />;
+      case 'board':
+        return <FileText size={24} />;
+      case 'notice':
+        return <AlertCircle size={24} />;
+      case 'message':
+        return <Mail size={24} />;
+      default:
+        return <FileText size={24} />;
+    }
+  };
+
+  return (
+    <div key={card.id} className="vet-dash__card">
+      <div className="vet-dash__header">
+        <span className="vet-dash__icon">
+          {getIcon(card.iconType)}
+        </span>
+        <h2>{card.title}</h2>
+        {card.hasAddButton && <button className="vet-dash__btn-add">+</button>}
+      </div>
+      <div className="vet-dash__table-container">
+        <table className="vet-dash__table">
+          <thead>
+            <tr>
+              {card.columns?.map((column, index) => (
+                <th key={index}>{column}</th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {card.data.map((row, index) => (
+              <tr key={index}>
+                {card.columns?.map((column, colIndex) => (
+                  <td key={colIndex}>{row[column]}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-// 메인 컴포넌트 (Main)
 const Main = () => {
-  // 첫 번째 행의 카드 데이터
   const firstRowCards = [
     {
       id: 1,
-      icon: "🏢",
+      iconType: 'headquarters',
       title: "본사지시RT내역",
       type: "profile",
       hasAddButton: true,
@@ -127,7 +155,7 @@ const Main = () => {
     },
     {
       id: 2,
-      icon: "🏥",
+      iconType: 'outbound',
       title: "반출RT내역",
       hasAddButton: true,
       type: "clinic",
@@ -140,7 +168,7 @@ const Main = () => {
     },
     {
       id: 3,
-      icon: "🎁",
+      iconType: 'inbound',
       title: "반입RT내역",
       hasAddButton: true,
       columns: ["접수일자", "반입매장", "미처리"],
@@ -152,7 +180,7 @@ const Main = () => {
     },
     {
       id: 4,
-      icon: "📋",
+      iconType: 'board',
       title: "게시판",
       hasAddButton: true,
       columns: ["작성일자", "제목", "첨부"],
@@ -164,11 +192,9 @@ const Main = () => {
     },
   ];
 
-  // 두 번째 행의 카드 데이터
   const secondRowCards = [
     {
       id: 5,
-      icon: '📈',
       title: '매출현황',
       type: 'analytics',
       stats: [
@@ -179,7 +205,7 @@ const Main = () => {
     },
     {
       id: 6,
-      icon: "⚠️",
+      iconType: 'notice',
       title: "공지사항",
       hasAddButton: true,
       columns: ["등록일", "제목", "확인"],
@@ -191,7 +217,7 @@ const Main = () => {
     },
     {
       id: 7,
-      icon: "✉️",
+      iconType: 'message',
       title: "쪽지",
       hasAddButton: true,
       columns: ["보낸일자", "제목", "첨부"],

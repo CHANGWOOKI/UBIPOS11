@@ -34,7 +34,7 @@ $text-color: #333;
     .tab {
       width: 80px;
       height: 80px;
-      border-radius: 7px 0 0 7px;
+      border-radius: 10px 0 0 10px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       text-align: center;
@@ -79,10 +79,6 @@ $text-color: #333;
       color: #fff;
       transition: background-color 0.0s ease;
       margin: 5px 0;
-
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
-      }
     }
   }
 
@@ -110,25 +106,27 @@ $text-color: #333;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
+        padding: 10px 15px;
 
-        .avatar {
-          width: 60px;
-          height: 60px;
-          background-color: $secondary-color;
-          border-radius: 50%;
-          margin-bottom: 10px;
-        }
-
+      
         .user-name {
           font-weight: bold;
-          font-size: 1.1em;
+          font-size: 1.5em;
+          color: $primary-color;
+          margin: 8px 0;
+          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
         }
-
+      
         .user-id {
-          color: #888;
-          font-size: 0.8em;
+          color: #666;
+          font-size: 0.9em;
+          padding: 4px 12px;
+          background-color: rgba(78, 105, 189, 0.1);
+          border-radius: 15px;
+          border: 1px solid rgba(78, 105, 189, 0.2);
         }
+      
 
         h1 {
           margin: 0 0 15px 0;

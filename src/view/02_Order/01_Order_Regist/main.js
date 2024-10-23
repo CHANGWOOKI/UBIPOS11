@@ -5,55 +5,55 @@ import AgGridComponent2 from "../../../components/agGrid/AgGridComp2";
 
 const OrderRegister = () => {
     return (
-        <div className="order-management">
-            <div className="content-box">
-                <header>
-                    <h1 className="main-title">
-                        <span className="blue-dot"></span>주문등록
+        <div className="order-register">
+            <div className="order-register__container">
+                <header className="order-register__header">
+                    <h1 className="order-register__title">
+                        <span className="order-register__title-dot"></span>주문등록
                     </h1>
-                    <div className="header-buttons">
-                        <button className="query-button">
+                    <div className="order-register__actions">
+                        <button className="order-register__btn order-register__btn--query">
                             <Search size={18} />
                             조회
                         </button>
-                        <button className="new-button">
+                        <button className="order-register__btn order-register__btn--new">
                             <PlusCircle size={18} />
                             신규
                         </button>
-                        <button className="delete-button">
+                        <button className="order-register__btn order-register__btn--delete">
                             <Trash2 size={18} />
                             삭제
                         </button>
                     </div>
                 </header>
-                <main>
-                    <div className="search-bar">
-                        <div className="date-range">
-                            <label>주문일자</label>
-                            <div className="date-inputs">
-                                <input type="date" defaultValue="2024-10-15" />
-                                <label>주문번호</label>
-                                <input type="text" defaultValue="0001" />
-                                <button className="search-button">검색</button>
+                <main className="order-register__main">
+                    <div className="order-register__search">
+                        <div className="order-register__date-section">
+                            <label className="order-register__label">주문일자</label>
+                            <div className="order-register__date-controls">
+                                <input type="date" className="order-register__input" defaultValue="2024-10-15" />
+                                <label className="order-register__label">주문번호</label>
+                                <input type="text" className="order-register__input" defaultValue="0001" />
+                                <button className="order-register__btn order-register__btn--search">검색</button>
                             </div>
                         </div>
-                        <div className="search-options">
-                            <label>매장존</label>
-                            <select>
+                        <div className="order-register__options">
+                            <label className="order-register__label">매장존</label>
+                            <select className="order-register__select">
                                 <option>A</option>
                                 <option>B</option>
                             </select>
-                            <div className="checkbox-group">
-                                <input type="checkbox" id="batch-toggle" />
-                                <label htmlFor="batch-toggle">바로등록</label>
+                            <div className="order-register__checkbox-wrapper">
+                                <input type="checkbox" id="batch-toggle" className="order-register__checkbox" />
+                                <label htmlFor="batch-toggle" className="order-register__label">바로등록</label>
                             </div>
                         </div>
                     </div>
                 </main>
-                <div className="grid">
+                <div className="order-register__grid-primary">
                     <AgGridComponent2/>
                 </div>
-                <div className="grid2">
+                <div className="order-register__grid-secondary">
                     {/* Second grid content */}
                 </div>
             </div>

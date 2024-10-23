@@ -6,11 +6,10 @@
   background-color: #FFFFFF;
 
   .title-section {
-    .sewon-logo {
-      font-size: x-large;
-      font-weight: bold;
-      color: #333;
-    }
+    img {
+      width: 80%;    /* 부모 요소의 50% */
+      height: auto;
+  }
   }
 
   .right-section {

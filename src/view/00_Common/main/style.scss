@@ -1,16 +1,16 @@
 .vet-dash {
-  max-height: 100%;
   height: 100%;
-
+  
   &__container {
     max-width: 100%;
-    padding: 2%;
+    margin: 0 auto;
+    will-change: transform;
   }
 
   &__row {
     display: grid;
-    gap: 2%;
-    margin-bottom: 2%;
+    gap: 24px;
+    margin-bottom: 24px;
     grid-template-columns: repeat(4, 1fr);
 
     &:last-child {
@@ -25,201 +25,285 @@
 
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
+      gap: 16px;
     }
   }
 
   &__card {
-    background: white;
-    border-radius: 2%;
-    padding: 4%;
-    box-shadow: 0 1% 3% rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    height: 35vh; /* 고정 높이 */
-    min-height: 35vh; /* 최소 높이 */
-    max-height: 35vh; /* 최대 높이 제한 */
-    overflow: hidden; /* 넘치는 내용을 숨김 */
+    height: 35vh;
+    min-height: 35vh;
+    max-height: 35vh;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #edf2f7;
+    transform: translateZ(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, box-shadow;
+
+    @media (hover: hover) {
+      &:hover {
+        transform: translateY(-2px) translateZ(0);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+      }
+    }
 
     &--wide {
-      grid-column: span 2; /* 넓은 카드 */
-      padding: 2%;
+      grid-column: span 2;
     }
   }
 
   &__header {
     display: flex;
     align-items: center;
-    gap: 2%;
-    margin-bottom: 2%;
-    padding-bottom: 1%;
-    border-bottom: 0.1% solid #eee;
-    flex-shrink: 0;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #edf2f7;
+    height: 60px;
 
     h2 {
-      font-size: 130%;
-      color: #333;
-      margin: 0;
+      font-size: 18px;
+      color: #1a1f36;
       font-weight: 600;
+      margin: 0;
     }
   }
 
   &__icon {
-    font-size: 150%;
-    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(78, 105, 189, 0.1);
+    border-radius: 12px;
+    color: #4e69bd;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   &__btn-add {
     margin-left: auto;
-    width: 10%;
-    height: 10%;
-    background: white;
-    color: #4475f2;
+    width: 32px;
+    height: 32px;
+    background: rgba(78, 105, 189, 0.1);
+    color: #4e69bd;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 200%;
-    flex-shrink: 0;
+    font-size: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    @media (hover: hover) {
+      &:hover {
+        background: #4e69bd;
+        color: white;
+        transform: scale(1.02) translateZ(0);
+      }
+    }
   }
 
   &__table-container {
-    display: flex;
-    flex-direction: column;
     flex: 1;
-    min-height: 0;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+    background: #fff;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(78, 105, 189, 0.2);
+      border-radius: 3px;
+
+      &:hover {
+        background: rgba(78, 105, 189, 0.3);
+      }
+    }
   }
 
   &__table {
     width: 100%;
-    margin-bottom: 2%;
-    border-collapse: collapse;
-    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
 
     th, td {
-      padding: 1.2%;
+      padding: 12px 16px;
       text-align: left;
-      border-bottom: 0.1% solid #eee;
-      font-size: 90%;
-    }
-
-    th:nth-child(1), td:nth-child(1) {
-      width: 40%;
-    }
-
-    th:nth-child(2), td:nth-child(2) {
-      width: 40%;
-    }
-
-    th:nth-child(3), td:nth-child(3) {
-      width: 20%;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     th {
       font-weight: 600;
-      color: #666;
-      background-color: #f8f9fa;
+      color: #1a1f36;
+      background-color: #f8fafc;
       position: sticky;
       top: 0;
       z-index: 1;
+
+      &:first-child {
+        border-top-left-radius: 12px;
+      }
+
+      &:last-child {
+        border-top-right-radius: 12px;
+      }
     }
 
-    td {
-      color: #333;
+    tr {
+      transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      td {
+        color: #4a5568;
+        border-bottom: 1px solid #edf2f7;
+        transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      
+      &:hover td {
+        background-color: #f8fafc;
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
     }
   }
 
   &__traction {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    min-height: 0;
-    overflow: auto;
+    height: calc(100% - 60px);
+    gap: 16px;
   }
 
   &__stats-row {
-    display: flex;
-    gap: 2%;
-    padding: 1.5%;
-    background: #f8f9fa;
-    border-radius: 1%;
-    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
+    background: #fff;
   }
 
   &__stat-item {
-    flex: 1;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
   }
 
+
   &__label {
-    font-size: 100%;
-    color: #666;
-    display: block;
-    margin-bottom: 2%;
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
   }
 
   &__value {
-    font-size: 120%;
-    font-weight: bold;
-    color: #333;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1f36;
+    text-align: center;
+
+    &--positive {
+      color: #10b981;
+    }
+
+    &--negative {
+      color: #ef4444;
+    }
   }
 
   &__graph {
     flex: 1;
-    background: #f8f9fa;
-    border-radius: 1%;
-    margin: 2% 0;
-    min-height: 100px; /* 그래프 최소 높이 설정 */
+    background: #fff;
+    border-radius: 12px;
+    padding: 5px;
+    border: 1px solid #edf2f7;
     position: relative;
+    min-height: 150px;
 
     canvas {
       width: 100% !important;
       height: 100% !important;
-    }
-  }
-
-  &__btn {
-    width: 100%;
-    padding: 1.2%;
-    border-radius: 1%;
-    border: 0.1% solid #4475f2;
-    background: transparent;
-    color: #4475f2;
-    cursor: pointer;
-    font-weight: 500;
-    transition: all 0.2s;
-    margin-top: auto;
-    flex-shrink: 0;
-
-    &:hover {
-      background: #4475f2;
-      color: white;
+      transform: translateZ(0);
     }
   }
 
   @media (max-width: 1400px) {
-    &__container {
-      padding: 1.5%;
+    &__card {
+      padding: 20px;
+      height: 350px;
+      min-height: 350px;
+
+      &--wide {
+        height: 400px;
+        min-height: 400px;
+      }
     }
 
-    &__header {
-      margin-bottom: 1.5%;
+    &__value {
+      font-size: 18px;
     }
   }
 
   @media (max-width: 768px) {
+    &__card {
+      padding: 16px;
+      height: 300px;
+      min-height: 300px;
+
+      &--wide {
+        height: 350px;
+        min-height: 350px;
+      }
+    }
+
+    &__header {
+      height: 50px;
+      margin-bottom: 16px;
+      
+      h2 {
+        font-size: 16px;
+      }
+    }
+
     &__stats-row {
-      padding: 1%;
+      grid-template-columns: 1fr;
+      padding: 12px;
     }
 
     &__value {
-      font-size: 110%;
+      font-size: 16px;
     }
 
-    &__btn {
-      padding: 1%;
-      font-size: 100%;
+    &__graph {
+      min-height: 150px;
+      height: calc(100% - 76px);
     }
   }
 }

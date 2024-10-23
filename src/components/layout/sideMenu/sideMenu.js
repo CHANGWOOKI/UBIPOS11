@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, MessageSquare, LogOut } from 'lucide-react';
+import { Home, ShoppingCart, Box, Truck, PackageSearch, Users, Settings, CircleEllipsis, MessageSquare, LogOut } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import "./sideMenu.scss";
 
@@ -16,7 +16,7 @@ const SideMenu = () => {
     { id: 3, title: '점간이동관리', icon: Truck },
     { id: 4, title: '재고관리', icon: PackageSearch },
     { id: 5, title: '고객관리', icon: Users },
-    { id: 6, title: '기초관리', icon: Settings },
+    { id: 6, title: '기초관리', icon: CircleEllipsis },
     { id: 7, title: '메시지관리', icon: MessageSquare },
   ];
 

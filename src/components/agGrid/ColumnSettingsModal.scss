@@ -1,25 +1,22 @@
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
   z-index: 50;
 }
 
 .column-settings-modal {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 1rem;
+  right: 1rem;
   background-color: white;
   border-radius: 12px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-  width: 90%;
-  max-width: 600px;
+  width: 70%;
+  max-width: 300px;
   z-index: 51;
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 500px;
   padding-right: calc(100vw - 100%);
   box-sizing: content-box;
 
@@ -35,7 +32,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      
+
       h2 {
         font-size: 1.25rem;
         font-weight: 600;
@@ -96,91 +93,84 @@
     flex: 1;
     min-height: 0;
     padding: 1.5rem;
-    overflow: hidden;
-    
-    .tab-content {
-      height: 100%;
-      overflow-y: auto;
-      padding-right: 16px;
-      margin-right: -16px;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
-      scrollbar-color: #cbd5e1 transparent;
+    overflow-y: auto;
+    height: calc(800px - 4.5rem);
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
 
-      &::-webkit-scrollbar {
-        width: 8px;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 4px;
+    }
+
+    .column-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .empty-state {
+        text-align: center;
+        color: #6b7280;
+        padding: 2rem;
+        background-color: #f9fafb;
+        border-radius: 6px;
+        font-size: 0.875rem;
       }
 
-      &::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: #cbd5e1;
-        border-radius: 4px;
-      }
-
-      .column-list {
+      .column-item {
         display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem;
+        border-radius: 6px;
+        background-color: white;
+        border: 1px solid #e5e7eb;
+        transition: all 0.2s;
 
-        .empty-state {
-          text-align: center;
-          color: #6b7280;
-          padding: 2rem;
+        &:hover {
           background-color: #f9fafb;
-          border-radius: 6px;
-          font-size: 0.875rem;
         }
 
-        .column-item {
+        .column-name {
+          font-size: 0.875rem;
+          color: #111827;
+
+          .column-field {
+            margin-left: 0.5rem;
+            color: #6b7280;
+            font-size: 0.75rem;
+          }
+        }
+
+        .action-button {
           display: flex;
           align-items: center;
-          justify-content: space-between;
-          padding: 0.75rem;
+          gap: 0.5rem;
+          padding: 0.5rem 0.75rem;
           border-radius: 6px;
-          background-color: white;
-          border: 1px solid #e5e7eb;
+          border: none;
+          background: none;
+          color: #6b7280;
+          cursor: pointer;
           transition: all 0.2s;
+          font-size: 0.875rem;
 
-          &:hover {
-            background-color: #f9fafb;
+          &.remove:hover {
+            background-color: #fee2e2;
+            color: #dc2626;
           }
 
-          .column-name {
-            font-size: 0.875rem;
-            color: #111827;
-
-            .column-field {
-              margin-left: 0.5rem;
-              color: #6b7280;
-              font-size: 0.75rem;
-            }
-          }
-
-          .action-button {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 0.75rem;
-            border-radius: 6px;
-            border: none;
-            background: none;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 0.875rem;
-
-            &.remove:hover {
-              background-color: #fee2e2;
-              color: #dc2626;
-            }
-
-            &.restore:hover {
-              background-color: #dcfce7;
-              color: #16a34a;
-            }
+          &.restore:hover {
+            background-color: #dcfce7;
+            color: #16a34a;
           }
         }
       }

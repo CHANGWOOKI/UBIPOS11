@@ -1,9 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import { Settings } from 'lucide-react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import ColumnSettingsModal from './ColumnSettingsModal';
-import './AgGridComp.scss'; // SCSS 파일 임포트 추가
+import './AgGridComp.scss';
 
 const AgGridComponent = ({ rowData, columnDefs }) => {
     const defaultColDef = useMemo(() => ({
@@ -11,21 +12,20 @@ const AgGridComponent = ({ rowData, columnDefs }) => {
         minWidth: 100,
         sortable: true,
         filter: false,
+        resizable: true,
     }), []);
 
     const [showModal, setShowModal] = useState(false);
     const [currentColumnDefs, setCurrentColumnDefs] = useState(columnDefs);
     const [deletedColumns, setDeletedColumns] = useState([]);
+    const [gridApi, setGridApi] = useState(null);
 
-    // 컬럼 설정 버튼 클릭 시 모달 열기
     const handleColumnSettings = () => setShowModal(true);
 
-    // 컬럼 정의 변경 시 호출되는 함수
     const onColumnDefsChange = (newColumnDefs) => {
         setCurrentColumnDefs(newColumnDefs);
     };
 
-    // 컬럼 삭제 및 복구 함수
     const handleRemoveColumn = (column) => {
         setDeletedColumns((prev) => [...prev, column]);
         setCurrentColumnDefs((prev) => prev.filter((col) => col.field !== column.field));
@@ -36,28 +36,72 @@ const AgGridComponent = ({ rowData, columnDefs }) => {
         setCurrentColumnDefs((prev) => [...prev, column]);
     };
 
-    // 드랍 함수
     const handleDrop = (e) => {
         e.preventDefault();
         const column = JSON.parse(e.dataTransfer.getData('text/plain'));
         setCurrentColumnDefs((prev) => [...prev, column]);
     };
 
-    // 드래그 오버 함수
     const handleDragOver = (e) => e.preventDefault();
 
+    const gridOptions = {
+        suppressMovableColumns: false,
+        suppressColumnVirtualisation: true,
+        suppressRowVirtualisation: false,
+        rowBuffer: 10,
+        rowModelType: 'clientSide',
+        enableCellTextSelection: true,
+        suppressCellSelection: false,
+        suppressRowClickSelection: true,
+        suppressLoadingOverlay: true,
+        suppressNoRowsOverlay: true,
+        domLayout: 'normal'
+    };
+
+    const localeText = {
+        loadingOoo: "로딩중..."
+    };
+
+    const onGridReady = (params) => {
+        setGridApi(params.api);
+        if (params.api) {
+            params.api.sizeColumnsToFit();
+
+            const resizeObserver = new ResizeObserver(() => {
+                setTimeout(() => {
+                    params.api.sizeColumnsToFit();
+                }, 100);
+            });
+
+            const gridElement = document.querySelector('.ag-theme-alpine');
+            if (gridElement) {
+                resizeObserver.observe(gridElement);
+            }
+        }
+    };
+
     return (
-        <div className="ag-grid-container" onDrop={handleDrop} onDragOver={handleDragOver}>
-            <button className='modal-btn' onClick={handleColumnSettings}>열 설정</button>
-            <div className="ag-theme-alpine" style={{ height: 570, width: '100%' }}>
+        <div className="ag-grid-container">
+            <div 
+                className="ag-theme-alpine" 
+                style={{ height: 580, width: '100%' }}
+                onDrop={handleDrop} 
+                onDragOver={handleDragOver}
+            >
+                <button className='column-settings-btn' onClick={handleColumnSettings}>
+                    <Settings size={16} className="settings-icon" />
+                </button>
                 <AgGridReact
                     rowData={rowData}
                     columnDefs={currentColumnDefs}
                     defaultColDef={defaultColDef}
                     animateRows={true}
-                    pagination={true}
-                    paginationPageSize={11} // 페이지당 항목 수 설정
-                    paginationNumberFormatter={function(params) { return params.value; }} // 페이지 번호 포매팅
+                    gridOptions={gridOptions}
+                    localeText={localeText}
+                    onGridReady={onGridReady}
+                    onFirstDataRendered={(params) => {
+                        params.api.sizeColumnsToFit();
+                    }}
                 />
             </div>
             {showModal && (

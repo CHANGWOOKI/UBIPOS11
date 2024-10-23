@@ -1,399 +1,146 @@
-import "./style.scss";
-import React,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, PlusCircle, Trash2 } from 'lucide-react';
-import AgGridComponent2 from "../../../components/agGrid/AgGridComp2";
-import AgGridComponent from "../../../components/agGrid/AgGridComp";
+import './style.scss'; // 기존 스타일 파일 import
 
-
+const STORAGE_KEYS = {
+  ORDER_DATE: 'orderManagement_orderDate',
+  ORDER_NUMBER: 'orderManagement_orderNumber',
+  STORE_ZONE: 'orderManagement_storeZone',
+  STORE_NOTE: 'orderManagement_storeNote',
+  INSTANT_REGISTER: 'orderManagement_instantRegister'
+};
 
 const OrderRegister = () => {
+  const [orderDate, setOrderDate] = useState(() =>
+    sessionStorage.getItem(STORAGE_KEYS.ORDER_DATE) || '2024-10-15'
+  );
+  const [orderNumber, setOrderNumber] = useState(() =>
+    sessionStorage.getItem(STORAGE_KEYS.ORDER_NUMBER) || '0001'
+  );
+  const [storeZone, setStoreZone] = useState(() =>
+    sessionStorage.getItem(STORAGE_KEYS.STORE_ZONE) || 'A'
+  );
+  const [storeNote, setStoreNote] = useState(() =>
+    sessionStorage.getItem(STORAGE_KEYS.STORE_NOTE) || ''
+  );
+  const [instantRegister, setInstantRegister] = useState(() =>
+    sessionStorage.getItem(STORAGE_KEYS.INSTANT_REGISTER) === 'true'
+  );
 
-    const initialData = [
-        {
-            번호: 1,
-            품번: 'LKJ1WTOH002BR',
-            품명: 'OVERSIZE HANDMADE COAT_BROWN',
-            TAG가: '12345',
-            색상: 'BROWN',
-            매장재고: 10,
-            창고재고: 20,
-            수량: 5,
-            금액: 300000,
-            주문일자: '2024-10-05',
-            주문구분: '미처리',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 3,
-            품번: 'LKJ1TCKS002RD',
-            품명: 'CASHMERE WOOL KNIT SKIRT_RED',
-            TAG가: '22331',
-            색상: 'RED',
-            매장재고: 8,
-            창고재고: 12,
-            수량: 2,
-            금액: 200000,
-            주문일자: '2024-10-10',
-            주문구분: '출고',
-        },
-        {
-            번호: 4,
-            품번: 'LKJ1JKTO003BL',
-            품명: 'DENIM JACKET_BLUE',
-            TAG가: '66789',
-            색상: 'BLUE',
-            매장재고: 7,
-            창고재고: 13,
-            수량: 4,
-            금액: 220000,
-            주문일자: '2024-10-12',
-            주문구분: '출고불가',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '54321',
-            색상: 'DARK GREY',
-            매장재고: 5,
-            창고재고: 15,
-            수량: 3,
-            금액: 150000,
-            주문일자: '2024-10-07',
-            주문구분: '진행중',
-        }
-    ];
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.ORDER_DATE, orderDate);
+  }, [orderDate]);
 
-    const columnDefs = [
-        { headerName: '번호', field: '번호', width: 80 },
-        { headerName: '품번', field: '품번', width: 180 },
-        { headerName: '품명', field: '품명', width: 250 },
-        { headerName: 'TAG가', field: 'TAG가', width: 100 },
-        { headerName: '색상', field: '색상', width: 100 },
-        { headerName: '매장재고', field: '매장재고', width: 120 },
-        { headerName: '창고재고', field: '창고재고', width: 120 },
-        { headerName: '수량', field: '수량', width: 120 },
-        { headerName: '금액', field: '금액', width: 120 },
-        { headerName: '주문일자', field: '주문일자', width: 150 },
-        { headerName: '주문구분', field: '주문구분', width: 120 }
-    ];
-    const [orders, setOrders] = useState(initialData);
-    return (
-        <div className="order-management">
-            <div className="content-box">
-                <header>
-                    <h1 className="main-title">
-                        <span className="blue-dot"></span>주문등록
-                    </h1>
-                    <div className="header-buttons">
-                        <button className="query-button">
-                            <Search size={18} />
-                            조회
-                        </button>
-                        <button className="new-button">
-                            <PlusCircle size={18} />
-                            신규
-                        </button>
-                        <button className="delete-button">
-                            <Trash2 size={18} />
-                            삭제
-                        </button>
-                    </div>
-                </header>
-                <main>
-                    <div className="search-bar">
-                        <div className="date-range">
-                            <label>주문일자</label>
-                            <div className="date-inputs">
-                                <input type="date" defaultValue="2024-10-15" />
-                                <label>주문번호</label>
-                                <input type="text" defaultValue="0001" />
-                                <button className="search-button">검색</button>
-                            </div>
-                        </div>
-                        <div className="search-options">
-                            <label>매장존</label>
-                            <select>
-                                <option>A</option>
-                                <option>B</option>
-                            </select>
-                            <div className="checkbox-group">
-                                <input type="checkbox" id="batch-toggle" />
-                                <label htmlFor="batch-toggle">바로등록</label>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </main>
-                <div className="grid">
-                    <AgGridComponent2/>
-                </div>
-                <div className="grid2">
-                <AgGridComponent rowData={orders} columnDefs={columnDefs} />
-                    {/* Second grid content */}
-                </div>
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.ORDER_NUMBER, orderNumber);
+  }, [orderNumber]);
+
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.STORE_ZONE, storeZone);
+  }, [storeZone]);
+
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.STORE_NOTE, storeNote);
+  }, [storeNote]);
+
+  useEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.INSTANT_REGISTER, instantRegister.toString());
+  }, [instantRegister]);
+
+  return (
+    <div className="order-management">
+      <div className="content-box">
+        <header>
+          <div className="header-top">
+            <h1 className="main-title">
+              <span className="blue-dot"></span>
+              주문등록
+            </h1>
+            <div className="header-buttons">
+              <button className="query-button">
+                <Search size={18} />
+                조회
+              </button>
+              <button className="new-button">
+                <PlusCircle size={18} />
+                신규
+              </button>
+              <button className="delete-button">
+                <Trash2 size={18} />
+                삭제
+              </button>
             </div>
-        </div>
-    );
-}
+          </div>
+          <div className="search-bar">
+            <div className="search-group">
+              <label>주문일자</label>
+              <div className="input-wrapper">
+                <input
+                  type="date"
+                  value={orderDate}
+                  onChange={(e) => setOrderDate(e.target.value)}
+                  className="standard-input"
+                />
+              </div>
+            </div>
+            <div className="search-group">
+              <label>주문번호</label>
+              <div className="input-wrapper">
+                <input
+                  type="text"
+                  value={orderNumber}
+                  onChange={(e) => setOrderNumber(e.target.value)}
+                  className="standard-input"
+                />
+              </div>
+            </div>
+            <div className="search-group">
+              <label>매장존</label>
+              <div className="input-wrapper">
+                <select
+                  value={storeZone}
+                  onChange={(e) => setStoreZone(e.target.value)}
+                  className="standard-input"
+                >
+                  <option value="A">A존</option>
+                  <option value="B">B존</option>
+                  <option value="C">C존</option>
+                </select>
+              </div>
+            </div>
+            <div className="search-group note-input">
+              <label>비고</label>
+              <div className="input-wrapper" style={{ flex: '1 1 auto' }}>
+                <input
+                  type="text"
+                  value={storeNote}
+                  onChange={(e) => setStoreNote(e.target.value)}
+                  className="standard-input"
+                  style={{ width: '70%' }}
+                />
+              </div>
+            </div>
+            <div className="search-group">
+              <button
+                className={`instant-register-btn ${instantRegister ? 'active' : ''}`}
+                onClick={() => setInstantRegister(!instantRegister)}
+              >
+                바로등록
+              </button>
+            </div>
+          </div>
+        </header>
+        <main>
+          <div className="grid primary">
+            {/* 주문 목록 그리드 컴포넌트 */}
+          </div>
+          <div className="grid secondary">
+            {/* 추가 정보 그리드 컴포넌트 */}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
 
 export default OrderRegister;

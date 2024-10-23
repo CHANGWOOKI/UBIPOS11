@@ -1,9 +1,19 @@
 import React, { useState } from 'react';
 import { Bell, Mail, Headset, Sun, Moon } from 'lucide-react';
 import './header.scss';
-
 const Header = () => {
   const [isToggled, setIsToggled] = useState(false);
+  const handleBellClick = () => {
+    const width = 1000;
+    const height = 700;
+    const left = (window.screen.width / 2) - (width / 2);
+    const top = (window.screen.height / 2) - (height / 2);
+    window.open(
+      'https://822.co.kr/',
+      'Popup',
+      `width=${width},height=${height},top=${top},left=${left}`
+    );
+  };
   return (
     <div className="top-menu">
       <div className="title-section">
@@ -20,14 +30,16 @@ const Header = () => {
               </svg>
             </button>
           </div>
-          <div className="icon-wrapper">
+          <div className="icon-wrapper" title="쪽지">
             <Mail size={20} />
           </div>
-          <div className="icon-wrapper">
+          <div className="icon-wrapper" title="공지사항">
             <Bell size={20} />
           </div>
-          <div className="icon-wrapper">
-            <Headset size={20} />
+          <div className="icon-wrapper" title="원격지원">
+            <div onClick={handleBellClick} style={{ cursor: 'pointer' }}>
+              <Headset size={20} />
+            </div>
           </div>
         </div>
         <div className="toggle-section">

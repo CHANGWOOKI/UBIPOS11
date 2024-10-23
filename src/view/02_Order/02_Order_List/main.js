@@ -387,7 +387,7 @@ const Main = () => {
             <div className="content-box">
                 <header>
                     <div className="header-top">
-                        <h1 className="main-title"><span className="blue-dot"></span>주문 현황</h1>
+                        <h1 className="main-title"><span className="blue-dot"></span>주문현황</h1>
                         <div className="header-buttons">
                             <button className="query-button" onClick={handleSearch}>
                                 <Search size={18} />

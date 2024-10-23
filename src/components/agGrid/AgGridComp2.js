@@ -20,29 +20,29 @@ function AgGridComponent2() {
 
 
     const [rowData, setRowData] = useState([
-        {
-            번호: 1,
-            품번: 'LKJ1WTOH002BR',
-            품명: 'OVERSIZE HANDMADE COAT_BROWN',
-            TAG가: '',
-            색상: 'BROWN',
-            매장재고: 0,
-            창고재고: 0,
-            수량: 0,
-            금액: 0,
-        },
-        {
-            번호: 2,
-            품번: 'LKJ1TCKS002DG',
-            품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
-            TAG가: '',
-            색상: 'DARK GREY',
-            매장재고: 0,
-            창고재고: 0,
-            수량: 0,
-            금액: 0,
-        },
-        // 추가 데이터...
+        // {
+        //     번호: 1,
+        //     품번: 'LKJ1WTOH002BR',
+        //     품명: 'OVERSIZE HANDMADE COAT_BROWN',
+        //     TAG가: '',
+        //     색상: 'BROWN',
+        //     매장재고: 0,
+        //     창고재고: 0,
+        //     수량: 0,
+        //     금액: 0,
+        // },
+        // {
+        //     번호: 2,
+        //     품번: 'LKJ1TCKS002DG',
+        //     품명: 'CASHMERE WOOL KNIT SKIRT_DARK GREY',
+        //     TAG가: '',
+        //     색상: 'DARK GREY',
+        //     매장재고: 0,
+        //     창고재고: 0,
+        //     수량: 0,
+        //     금액: 0,
+        // },
+        // // 추가 데이터...
     ]);
 
     const [showPopup, setShowPopup] = useState(false);
@@ -102,7 +102,7 @@ function AgGridComponent2() {
             variant="contained" 
             onClick={() => setShowPopup(true)} // 버튼 클릭 시 팝업 열기
         >품번</Button>
-        <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
+        <div className="ag-theme-alpine" style={{ height: 100, width: "100%" }}>
                         <ProductSearchPopup 
                 open={showPopup}
                 onClose={() => setShowPopup(false)}

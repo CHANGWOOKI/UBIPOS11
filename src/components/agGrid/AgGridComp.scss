@@ -1,6 +1,11 @@
+.ag-grid-container {
+    position: relative;
+    width: 100%;
+}
 
 .ag-theme-alpine {
-    --ag-header-height: 50px;
+    --ag-header-height: 38px;
+    --ag-row-height: 35px;
     --ag-header-foreground-color: #374151;
     --ag-header-background-color: #f9fafb;
     --ag-row-hover-color: #f3f4f6;
@@ -9,27 +14,65 @@
     --ag-row-border-color: #f3f4f6;
     --ag-border-color: #e5e7eb;
     
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    transform: translateZ(0);
+    will-change: transform;
 
-    // 헤더 스타일링
+    .column-settings-btn {
+        position: absolute;
+        right: 7px;
+        top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        color: #4e69bd;
+        border: none;
+        border-radius: 4px;
+        padding: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        z-index: 1;
+
+        &:hover {
+            color: #000000;
+        }
+
+        .settings-icon {
+            stroke-width: 2px;
+        }
+    }
+    
     .ag-header {
         border-bottom: 2px solid #e5e7eb;
+        position: relative;
+        transform: translateZ(0);
 
         .ag-header-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: var(--ag-header-background-color);
-            transition: background-color 0.2s;
+            padding: 0;
+            will-change: transform;
 
             .ag-header-cell-label {
                 color: var(--ag-header-foreground-color);
                 font-weight: 600;
-                font-size: 14px;
-                padding: 0 16px;
+                font-size: 13px;
+                padding: 0 8px;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
                 justify-content: center;
+                text-align: center;
 
                 .ag-header-cell-text {
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                    text-align: center;
                 }
             }
 
@@ -37,83 +80,119 @@
                 background-color: #f3f4f6;
             }
         }
-
-        // 정렬 아이콘 스타일링
-        .ag-sort-ascending-icon,
-        .ag-sort-descending-icon {
-            color: #4e69bd;
-        }
     }
 
-    // 행 스타일링
     .ag-row {
         border-bottom: 1px solid var(--ag-row-border-color);
-        transition: background-color 0.2s;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+        perspective: 1000px;
 
         .ag-cell {
-            font-size: 14px;
-            line-height: 1.5;
-            padding: 12px 16px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 13px;
+            padding: 4px 8px;
             color: #1f2937;
+            line-height: 1;
+            text-align: center;
             
             &:not(:last-child) {
                 border-right: 1px solid #f3f4f6;
+            }
+
+            // 특정 셀 정렬이 필요한 경우를 위한 유틸리티 클래스
+            &.left-align {
+                justify-content: flex-start !important;
+                text-align: left;
+            }
+            
+            &.right-align {
+                justify-content: flex-end !important;
+                text-align: right;
             }
         }
 
         &:hover {
             background-color: var(--ag-row-hover-color);
         }
+    }
 
-        &.ag-row-selected {
-            background-color: var(--ag-selected-row-background-color);
+    .ag-cell-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateZ(0);
+    }
+
+    .ag-header-cell-comp-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateZ(0);
+    }
+
+    .ag-body-viewport {
+        overflow-y: overlay !important;
+        scrollbar-width: thin;
+        transform: translateZ(0);
+        will-change: transform;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.3);
+            }
         }
     }
 
-    // 페이지네이션 스타일링
-    .ag-paging-panel {
-        height: 50px;
-        border-top: 1px solid var(--ag-border-color);
-        color: #4b5563;
-        font-size: 14px;
+    .ag-row-animation {
+        transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .ag-row:nth-child(even) {
+        background-color: #f9fafb; 
+    }
+    
+    .ag-row:nth-child(odd) {
+        background-color: #ffffff; 
+    }
 
-        .ag-paging-button {
-            background-color: transparent;
-            border: 1px solid #e5e7eb;
-            border-radius: 4px;
-            padding: 4px 8px;
-            margin: 0 2px;
-            cursor: pointer;
-            transition: all 0.2s;
-
-            &:hover:not(.ag-disabled) {
-                background-color: #f9fafb;
-                border-color: #d1d5db;
-            }
-
-            &.ag-disabled {
-                opacity: 0.5;
-                cursor: default;
-            }
-        }
-
-        .ag-paging-row-summary-panel {
-            margin: 0 16px;
-        }
+    // 선택적: 내부 컨텐츠가 있는 모든 요소에 대한 가운데 정렬 보장
+    .ag-cell-value {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
     }
 }
 
-.modal-btn {
-    background-color: #4e69bd;
-    color: white;
-    margin-bottom: 5px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 5px;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(78, 105, 189, 0.1);
-
+// 좁은 화면에서의 반응형 스타일
+@media (max-width: 768px) {
+    .ag-grid-container {
+        .grid-controls {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    }
 }

@@ -1,7 +1,13 @@
 import "./style.scss";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, PlusCircle, Trash2 } from 'lucide-react';
 import AgGridComponent from '../../../components/agGrid/AgGridComp';
+
+const STORAGE_KEYS = {
+    STATUS: 'orderManagement_status',
+    START_DATE: 'orderManagement_startDate',
+    END_DATE: 'orderManagement_endDate'
+  };
 
 const Main = () => {
     const initialData = [
@@ -81,7 +87,7 @@ const Main = () => {
             수량: 3,
             금액: 150000,
             주문일자: '2024-10-07',
-            주문구분: '진행중',
+            주문구분: '출고불가',
         },
         {
             번호: 2,
@@ -107,7 +113,7 @@ const Main = () => {
             수량: 3,
             금액: 150000,
             주문일자: '2024-10-07',
-            주문구분: '진행중',
+            주문구분: '출고불가',
         },
         {
             번호: 2,
@@ -133,7 +139,7 @@ const Main = () => {
             수량: 3,
             금액: 150000,
             주문일자: '2024-10-07',
-            주문구분: '진행중',
+            주문구분: '미처리',
         },
         {
             번호: 2,
@@ -159,7 +165,7 @@ const Main = () => {
             수량: 3,
             금액: 150000,
             주문일자: '2024-10-07',
-            주문구분: '진행중',
+            주문구분: '미처리',
         },
         {
             번호: 2,
@@ -319,23 +325,48 @@ const Main = () => {
         }
     ];
 
-    const [orders, setOrders] = useState(initialData);
-    const [startDate, setStartDate] = useState(getThisMonthStart());
-    const [endDate, setEndDate] = useState(getToday());
-    const [selectedStatus, setSelectedStatus] = useState('전체');
-
-    const handleSearch = () => {
-        const filteredData = initialData.filter(order => {
-            const orderDate = new Date(order.주문일자);
-            return orderDate >= new Date(startDate) && orderDate <= new Date(endDate) &&
-                (selectedStatus === '전체' || order.주문구분 === selectedStatus);
-        });
-        setOrders(filteredData);
-    };
-
-    const handleStatusChange = (status) => {
-        setSelectedStatus(status);
-    };
+     // sessionStorage에서 저장된 값을 가져오거나 기본값 사용
+     const [orders, setOrders] = useState(initialData);
+     const [startDate, setStartDate] = useState(() => 
+         sessionStorage.getItem(STORAGE_KEYS.START_DATE) || getThisMonthStart()
+     );
+     const [endDate, setEndDate] = useState(() => 
+         sessionStorage.getItem(STORAGE_KEYS.END_DATE) || getToday()
+     );
+     const [selectedStatus, setSelectedStatus] = useState(() => 
+         sessionStorage.getItem(STORAGE_KEYS.STATUS) || '전체'
+     );
+ 
+     // 값이 변경될 때마다 sessionStorage 업데이트
+     useEffect(() => {
+         sessionStorage.setItem(STORAGE_KEYS.STATUS, selectedStatus);
+     }, [selectedStatus]);
+ 
+     useEffect(() => {
+         sessionStorage.setItem(STORAGE_KEYS.START_DATE, startDate);
+     }, [startDate]);
+ 
+     useEffect(() => {
+         sessionStorage.setItem(STORAGE_KEYS.END_DATE, endDate);
+     }, [endDate]);
+ 
+     // 컴포넌트 마운트 시 저장된 필터로 데이터 조회
+     useEffect(() => {
+         handleSearch();
+     }, []); // 컴포넌트 마운트 시 1회 실행
+ 
+     const handleSearch = () => {
+         const filteredData = initialData.filter(order => {
+             const orderDate = new Date(order.주문일자);
+             return orderDate >= new Date(startDate) && orderDate <= new Date(endDate) &&
+                 (selectedStatus === '전체' || order.주문구분 === selectedStatus);
+         });
+         setOrders(filteredData);
+     };
+ 
+     const handleStatusChange = (status) => {
+         setSelectedStatus(status);
+     };
 
     const columnDefs = [
         { headerName: '번호', field: '번호', width: 80 },

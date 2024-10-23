@@ -1,0 +1,139 @@
+.tabs-section {
+    display: flex;
+    gap: 2px;
+    padding: 0 1rem;
+    margin: 0.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+    min-height: 36px;
+    overflow-x: auto;
+    
+    // 깔끔한 스크롤바
+    &::-webkit-scrollbar {
+      height: 3px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f5f5f5;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #ddd;
+      border-radius: 3px;
+    }
+  
+    .tab-button {
+      display: flex;
+      align-items: center;
+      background: #f8f8f8;
+      border: 1px solid #eaeaea;
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      min-width: 140px;
+      max-width: 200px;
+      height: 32px;
+      position: relative;
+      margin-bottom: -1px;
+      
+      &:hover {
+        background: #fff;
+        
+        .remove-btn {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+  
+      // 활성화된 탭
+      &.active {
+        background: #ffffff;
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.02);
+        
+        .tab-btn {
+          color: #4a90e2;
+          font-weight: 500;
+        }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: -1px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: #4a90e2;
+          border-radius: 2px 2px 0 0;
+        }
+      }
+  
+      .tab-btn {
+        flex: 1;
+        padding: 0 12px;
+        font-size: 13px;
+        color: #666;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all 0.2s ease;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+        &:hover {
+          color: #333;
+        }
+      }
+  
+      .remove-btn {
+        width: 16px;
+        height: 16px;
+        min-width: 16px;
+        margin-right: 8px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        color: #999;
+        font-size: 12px;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.15s ease;
+  
+        &:hover {
+          background: rgba(0, 0, 0, 0.05);
+          color: #666;
+        }
+  
+        &:active {
+          background: rgba(0, 0, 0, 0.08);
+          color: #333;
+        }
+      }
+    }
+  }
+  
+  // 반응형 디자인
+  @media (max-width: 768px) {
+    .tabs-section {
+      padding: 0 0.5rem;
+      
+      .tab-button {
+        min-width: 120px;
+        
+        .tab-btn {
+          padding: 0 8px;
+          font-size: 12px;
+        }
+        
+        .remove-btn {
+          margin-right: 6px;
+        }
+      }
+    }
+  }

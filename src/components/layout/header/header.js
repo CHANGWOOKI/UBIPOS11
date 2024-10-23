@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Bell, Mail, Headset, Sun, Moon } from 'lucide-react';
 import './header.scss';
 
 const Header = () => {
   const [isToggled, setIsToggled] = useState(false);
-
   return (
     <div className="top-menu">
       <div className="title-section">
@@ -49,5 +48,4 @@ const Header = () => {
     </div>
   );
 };
-
 export default Header;

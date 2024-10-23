@@ -188,5 +188,15 @@ $white: #ffffff;
             padding: 20px;
             flex: 4;
         }
+        .search-button2 {
+            background-color: $primary-color;
+            color: $white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
     }
+}
 }

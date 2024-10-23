@@ -6,6 +6,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 //import "ag-grid-enterprise"
 import Button from "@mui/material/Button";
+import "./AgGridComp2.scss"
 import ProductSearchPopup from './searchPopup.js'
 import "./searchPopup.scss"
 // npm install @mui/material @emotion/react @emotion/styled
@@ -97,12 +98,10 @@ function AgGridComponent2() {
 
     return (
         <div>
-        <Button 
+        <Button className="button-scss"
             variant="contained" 
             onClick={() => setShowPopup(true)} // 버튼 클릭 시 팝업 열기
-        >
-            품번
-        </Button>
+        >품번</Button>
         <div className="ag-theme-alpine" style={{ height: 400, width: "100%" }}>
                         <ProductSearchPopup 
                 open={showPopup}
@@ -130,7 +129,9 @@ function AgGridComponent2() {
                     />
 
             </div>
+         <button className="search-button2">등록</button>  
         </div>
+        
     );
 }
 
